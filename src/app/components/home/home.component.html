@@ -48,10 +48,10 @@
 </div>
 
 <!-- Video Section -->
-<section class="video-section">
+<!-- <section class="video-section">
   <div class="video-container">
     <div class="video-wrapper">
-      <!-- Thumbnail y video -->
+
       <div class="thumbnail" [class.hidden]="isPlaying" (click)="isPlaying = true">
         <img src="ruleta.jpg" alt="Video thumbnail">
         <div class="play-button">
@@ -60,7 +60,7 @@
           </svg>
         </div>
       </div>
-      <!-- Iframe del video de YouTube -->
+
       <iframe
         *ngIf="isPlaying"
         class="youtube-video"
@@ -72,7 +72,34 @@
     </div>
     <div class="video-text">
       <h2>Nuestro Viaje</h2>
-      <!-- <p>Un recorrido por los momentos más especiales que hemos compartido juntos.</p> -->
+    </div>
+  </div>
+</section> -->
+
+<section class="video-section" #videoSection>
+  <div class="video-container">
+    <div class="video-wrapper">
+      <!-- Thumbnail y video -->
+      <div class="thumbnail" [class.hidden]="isPlaying" (click)="startPlaying()">
+        <img src="ruleta.jpg" alt="Video thumbnail">
+        <div class="play-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+      </div>
+      <!-- Iframe del video de YouTube -->
+      <iframe
+        *ngIf="isPlaying"
+        class="youtube-video"
+        [src]="videoUrl"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-text">
+      <h2>Nuestro Viaje</h2>
     </div>
   </div>
 </section>
