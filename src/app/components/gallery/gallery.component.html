@@ -1,0 +1,110 @@
+<div class="body">
+  <div class="landing-container">
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Nuestra Familia</h1>
+        <p>Momentos especiales que atesoramos</p>
+      </div>
+    </header>
+
+    <main>
+      <section *ngFor="let section of gallerySections" class="gallery-section"  [ngClass]="{'videos-section': section.description === 'Videitos'}">
+        <h2>{{ section.title }}</h2>
+        <p class="section-description">{{ section.description }}</p>
+
+        <!-- Carruseles solo para la sección de videos -->
+        <ng-container *ngIf="section.description === 'Videitos'">
+          <div class="video-carousel-container">
+            <div class="carousel-header">
+              <h3>Videos de Caro</h3>
+              <div class="carousel-controls">
+                <button class="carousel-button" (click)="scrollCarousel(carousel1, 'left')">&lt;</button>
+                <button class="carousel-button" (click)="scrollCarousel(carousel1, 'right')">&gt;</button>
+              </div>
+            </div>
+            <div #carousel1 class="video-carousel">
+              <div *ngFor="let item of getVideoGroups(section.items).group1" class="gallery-item">
+                <div class="item-container" (click)="openLightbox(item)">
+                  <img [src]="item.thumbnail" [alt]="item.caption" loading="lazy" />
+                  <div class="item-overlay">
+                    <span class="item-caption">{{ item.caption }}</span>
+                    <span class="play-icon">▶</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-carousel-container">
+            <div class="carousel-header">
+              <h3>Más videos de Caro</h3>
+              <div class="carousel-controls">
+                <button class="carousel-button" (click)="scrollCarousel(carousel2, 'left')">&lt;</button>
+                <button class="carousel-button" (click)="scrollCarousel(carousel2, 'right')">&gt;</button>
+              </div>
+            </div>
+            <div #carousel2 class="video-carousel">
+              <div *ngFor="let item of getVideoGroups(section.items).group2" class="gallery-item">
+                <div class="item-container" (click)="openLightbox(item)">
+                  <img [src]="item.thumbnail" [alt]="item.caption" loading="lazy" />
+                  <div class="item-overlay">
+                    <span class="item-caption">{{ item.caption }}</span>
+                    <span class="play-icon">▶</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="gallery-grid">
+          <div
+            *ngFor="let item of section.items"
+            class="gallery-item"
+            [ngClass]="{ 'video-item': item.type === 'video' }"
+          >
+            <div class="item-container" (click)="openLightbox(item)">
+              <img [src]="item.thumbnail" [alt]="item.caption" loading="lazy" />
+              <div class="item-overlay">
+                <span class="item-caption">{{ item.caption }}</span>
+                <span *ngIf="item.type === 'video'" class="play-icon">▶</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      class="lightbox"
+      *ngIf="(lightboxService.lightboxState$ | async)?.isOpen"
+    >
+      <div class="lightbox-overlay" (click)="lightboxService.close()"></div>
+      <div class="lightbox-content">
+        <button class="close-button" (click)="lightboxService.close()">×</button>
+
+        <ng-container
+          *ngIf="(lightboxService.lightboxState$ | async)?.currentItem as item"
+        >
+          <video
+            *ngIf="item.type === 'video'"
+            [src]="item.url"
+            controls
+            autoplay
+            class="lightbox-media"
+          ></video>
+          <img
+            *ngIf="item.type === 'image'"
+            [src]="item.url"
+            [alt]="item.caption"
+            class="lightbox-media"
+          />
+          <p class="lightbox-caption">{{ item.caption }}</p>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+  <br>
+</div>
+<app-footer></app-footer>

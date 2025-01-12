@@ -1,0 +1,126 @@
+<!--
+  <div class="home-container">
+    <svg class="curved-text" viewBox="0 0 500 500">
+      <defs>
+        <path id="curvePath"
+              d="M 250,50
+                 A 200,200 0 1,1 249.99,50"
+              fill="none" />
+      </defs>
+      <text>
+        <textPath xlink:href="#curvePath" startOffset="50%" text-anchor="middle">
+          FÉNIX FÉNIX FÉNIX FÉNI FÉNIX FÉNIX &nbsp;
+        </textPath>
+      </text>
+    </svg>
+    <div class="logo-container">
+      <img src="ruleta.jpg" alt="Logo Fénix" class="logo" />
+    </div>
+  </div>
+
+    <div class="sections">
+
+    <div class="sections-container">
+      <section class="section-card playlist">
+        <div class="section-content" (click)="irAPlaylist()">
+          <img src="fotos/otras.webp" alt="Playlist" class="section-image">
+          <h2>Playlist</h2>
+        </div>
+      </section>
+
+      <section class="section-card fotos">
+        <div class="section-content">
+          <img src="fotos/otras2.webp" alt="Fotos" class="section-image">
+          <h2>Fotos</h2>
+        </div>
+      </section>
+
+    </div>
+    </div>
+
+<app-banner></app-banner>
+
+<app-footer></app-footer> -->
+
+
+<!-- HTML -->
+<div class="home-container">
+  <svg class="curved-text" viewBox="0 0 500 500">
+    <defs>
+      <path id="curvePath"
+            d="M 250,50
+               A 200,200 0 1,1 249.99,50"
+            fill="none" />
+    </defs>
+    <text>
+      <textPath xlink:href="#curvePath" startOffset="50%" text-anchor="middle">
+        FÉNIX FÉNIX FÉNIX FÉNI FÉNIX FÉNIX &nbsp;
+      </textPath>
+    </text>
+  </svg>
+  <div class="logo-container">
+    <img src="ruleta.jpg" alt="Logo Fénix" class="logo" />
+  </div>
+</div>
+
+<div class="sections">
+  <div class="sections-container">
+    <!-- Primera sección -->
+    <section class="section-alternate">
+      <div class="section-content left" [@fadeSlide]="'in'">
+        <h2>Playlist</h2>
+        <p>Descubre nuestra selección musical cuidadosamente curada para ti.</p>
+        <button class="cta-button" (click)="irAPlaylist()">Explorar Playlist</button>
+      </div>
+      <div class="section-image right" [@fadeSlide]="'in'">
+        <img src="fotos/otras4.webp" alt="Playlist">
+      </div>
+    </section>
+
+    <!-- Segunda sección -->
+    <section class="section-alternate reverse">
+      <div class="section-image left" [@fadeSlide]="'in'">
+        <img src="fotos/otras4.webp" alt="Fotos">
+      </div>
+      <div class="section-content right" [@fadeSlide]="'in'">
+        <h2>Fotos</h2>
+        <p>Revive los mejores momentos a través de nuestra galería fotográfica.</p>
+        <button class="cta-button" (click)="irAFotos()">Ver Galería</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Video Section -->
+<section class="video-section">
+  <div class="video-container">
+    <div class="video-wrapper">
+      <!-- Thumbnail y video -->
+      <div class="thumbnail" [class.hidden]="isPlaying" (click)="isPlaying = true">
+        <img src="ruleta.jpg" alt="Video thumbnail">
+        <div class="play-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+      </div>
+      <!-- Iframe del video de YouTube -->
+      <iframe
+        *ngIf="isPlaying"
+        class="youtube-video"
+        src="https://www.youtube.com/embed/tK3Wu0TrsNM?autoplay=1&rel=0&modestbranding=1"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-text">
+      <h2>Nuestro Viaje</h2>
+      <!-- <p>Un recorrido por los momentos más especiales que hemos compartido juntos.</p> -->
+    </div>
+  </div>
+</section>
+
+
+<app-banner></app-banner>
+<app-footer></app-footer>

@@ -1,0 +1,188 @@
+/* reproductor.component.css */
+
+:host {
+  --color-green-dark: #2D5A27;
+  --color-green-medium: #4A8E3B;
+  --color-green-light: #7AB56B;
+  --color-green-pale: #A8D5A0;
+  --color-green-bg: #F0F7EF;
+}
+
+.reproductor-container {
+  background-color: var(--color-green-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.info-actual {
+  height: 300px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(45, 90, 39, 0.9));
+  padding: 20px;
+  color: white;
+  border-radius: 0 0 8px 8px;
+}
+
+.info-overlay h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.info-overlay p {
+  margin: 5px 0 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.controles-principales {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.barra-progreso {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.progreso-slider {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  background: var(--color-green-pale);
+  border-radius: 2px;
+  outline: none;
+}
+
+.progreso-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--color-green-medium);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.progreso-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.tiempo-actual, .tiempo-total {
+  font-size: 14px;
+  color: var(--color-green-dark);
+  min-width: 45px;
+}
+
+.botones-control {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.btn-control {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-green-dark);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-control:hover {
+  background-color: var(--color-green-bg);
+}
+
+.btn-control:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-principal {
+  background-color: var(--color-green-medium);
+  color: white;
+  width: 50px;
+  height: 50px;
+}
+
+.btn-principal:hover {
+  background-color: var(--color-green-dark);
+  transform: scale(1.05);
+}
+
+.lista-canciones {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.item-cancion {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  gap: 15px;
+}
+
+.item-cancion:hover {
+  background-color: var(--color-green-bg);
+}
+
+.item-cancion.activa {
+  background-color: var(--color-green-pale);
+}
+
+.mini-portada {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.info-cancion {
+  flex: 1;
+}
+
+.titulo-cancion {
+  font-weight: 500;
+  color: var(--color-green-dark);
+}
+
+.artista-cancion {
+  font-size: 14px;
+  color: var(--color-green-medium);
+  margin-top: 2px;
+}
+
+.duracion-cancion {
+  color: var(--color-green-medium);
+  font-size: 14px;
+}

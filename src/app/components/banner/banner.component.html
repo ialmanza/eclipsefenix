@@ -1,0 +1,37 @@
+<!-- banner.component.html -->
+<div class="banner-container">
+  <div class="banner-content">
+    <div class="banner-text">
+      <h1>Frasquito Motivacional</h1>
+      <p>Aquí encontrarás frases dedicadas con cariño</p>
+    </div>
+
+    <div class="services-showcase">
+      <div class="service-card" *ngFor="let service of services; let i = index"
+           [@fadeSlide]
+           [class.active]="i === currentIndex">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <fa-icon [icon]="faQuoteLeft" class="quote-icon"></fa-icon>
+            <p class="quote-text">{{service.description}}</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-image">
+              <img [src]="service.imagen" [alt]="service.nombre">
+            </div>
+            <div class="author-info">
+              <h4 class="author-name">{{service.nombre}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-indicators">
+      <span *ngFor="let service of services; let i = index"
+            [class.active]="i === currentIndex"
+            (click)="setCurrentIndex(i)">
+      </span>
+    </div>
+  </div>
+</div>

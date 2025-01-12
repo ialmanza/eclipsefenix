@@ -1,0 +1,92 @@
+/* footer.component.scss */
+:host {
+  --color-green-dark: #2D5A27;
+  --color-green-medium: #4A8E3B;
+  --color-green-light: #7AB56B;
+  --color-green-pale: #A8D5A0;
+  --color-green-bg: #F0F7EF;
+}
+
+:host {
+  --primary-color: var(--color-green-medium);
+  --primary-dark: var(--color-green-dark);
+  --secondary-color: var(--color-green-dark);
+  --accent-color: var(--color-green-light);
+  --background-color: var( --color-green-bg);
+  --text-color: var(--color-green-dark);
+  --heading-color: var(--color-green-dark);
+  --white: #ffffff;
+  --max-width: 1200px;
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+:host {
+  display: block;
+}
+
+.footer {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 4rem 0 2rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+
+.footer-bottom {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  p {
+    color: var(--background-color);
+    margin: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .footer-services, .footer-company, .footer-bottom-links a {
+    display: none;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .contact-info p {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+
+    .footer-bottom-links {
+      justify-content: center;
+    }
+  }
+}

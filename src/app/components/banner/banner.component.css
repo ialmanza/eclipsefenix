@@ -1,0 +1,222 @@
+:host {
+  --color-green-dark: #2D5A27;
+  --color-green-medium: #4A8E3B;
+  --color-green-light: #7AB56B;
+  --color-green-pale: #A8D5A0;
+  --color-green-bg: #F0F7EF;
+}
+
+:host {
+  --primary-color: var(--color-green-medium);
+  --primary-dark: var(--color-green-dark);
+  --secondary-color: var(--color-green-dark);
+  --accent-color: var(--color-green-light);
+  --background-color: var( --color-green-pale);
+  --text-color: var(--color-green-dark);
+  --heading-color: var(--color-green-dark);
+  --white: #ffffff;
+  --max-width: 1200px;
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* banner.component.css */
+.banner-container {
+  background-color: var(--background-color);
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.banner-text {
+  margin-bottom: 3rem;
+}
+
+.banner-text h1 {
+  color: var(--heading-color);
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.banner-text p {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.services-showcase {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  opacity: 0;
+  display: none;
+  transition: var(--transition);
+}
+
+.service-card.active {
+  opacity: 1;
+  display: block;
+}
+
+.testimonial-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-content {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.quote-icon {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+.quote-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.author-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary-color);
+}
+
+.author-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-name {
+  color: var(--heading-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.banner-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.banner-indicators span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-green-pale);
+  opacity: 0.3;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.banner-indicators span.active {
+  opacity: 1;
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .banner-container {
+    padding: 3rem 1rem;
+    min-height: 500px;
+  }
+
+  .banner-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .banner-text p {
+    font-size: 1.25rem;
+  }
+
+  .testimonial-card {
+    padding: 2rem;
+  }
+
+  .quote-text {
+    font-size: 1.1rem;
+  }
+
+  .author-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .author-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-container {
+    padding: 2rem 0.75rem;
+  }
+
+  .banner-text h1 {
+    font-size: 2rem;
+  }
+
+  .banner-text p {
+    font-size: 1.1rem;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,48 @@
+<div class="reproductor-container">
+  <!-- Información actual -->
+  <div class="info-actual" [ngStyle]="{'background-image': 'url(' + (cancionActual?.imagen || 'ruleta.jpg') + ')'}">
+    <div class="info-overlay">
+      <h2>{{cancionActual?.titulo || 'Selecciona una canción'}}</h2>
+      <p>{{cancionActual?.artista || 'Artista'}}</p>
+    </div>
+  </div>
+
+  <!-- Controles principales -->
+  <div class="controles-principales">
+    <div class="barra-progreso">
+      <div class="tiempo-actual">{{tiempoActual}}</div>
+      <input type="range"
+             [value]="progresoActual"
+             (input)="actualizarProgreso($event)"
+             class="progreso-slider">
+      <div class="tiempo-total">{{cancionActual?.duracion || '0:00'}}</div>
+    </div>
+
+    <div class="botones-control">
+      <button (click)="anterior()" [disabled]="!hayAnterior()" class="btn-control">
+        <fa-icon [icon]="iconoAnterior"></fa-icon>
+      </button>
+      <button (click)="toggleReproduccion()" class="btn-control btn-principal">
+        <fa-icon [icon]="reproduciendo ? iconoPausa : iconoPlay"></fa-icon>
+      </button>
+      <button (click)="siguiente()" [disabled]="!haySiguiente()" class="btn-control">
+        <fa-icon [icon]="iconoSiguiente"></fa-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Lista de canciones -->
+  <div class="lista-canciones">
+    <div *ngFor="let cancion of canciones"
+         (click)="seleccionarCancion(cancion)"
+         class="item-cancion"
+         [class.activa]="cancion.id === cancionActual?.id">
+      <img [src]="cancion.imagen" alt="Portada" class="mini-portada">
+      <div class="info-cancion">
+        <div class="titulo-cancion">{{cancion.titulo}}</div>
+        <div class="artista-cancion">{{cancion.artista}}</div>
+      </div>
+      <div class="duracion-cancion">{{cancion.duracion}}</div>
+    </div>
+  </div>
+</div>
