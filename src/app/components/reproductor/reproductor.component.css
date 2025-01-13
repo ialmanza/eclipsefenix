@@ -269,7 +269,7 @@
 }
 
 .control-button:hover {
-  color: var(--spotify-white);
+  color: var(--color-green-dark);
 }
 
 .control-button:disabled {
@@ -579,6 +579,7 @@
   .control-button {
     min-height: 48px;
     min-width: 48px;
+    color: var(--color-green-medium);
   }
 
   .play-button {
