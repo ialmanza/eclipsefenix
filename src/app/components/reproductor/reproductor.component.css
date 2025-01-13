@@ -109,7 +109,6 @@
   background: linear-gradient(to bottom, #404040, var(--spotify-black));
   padding: 24px;
   overflow-y: auto;
-  overflow: hidden;
 }
 
 .now-playing-header {
@@ -501,7 +500,6 @@
   }
 
   /* Eliminamos imagen y botón de favoritos */
-  .mini-track-image,
   .like-button {
     display: none;
   }
