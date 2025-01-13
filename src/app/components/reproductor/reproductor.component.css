@@ -109,6 +109,7 @@
   background: linear-gradient(to bottom, #404040, var(--spotify-black));
   padding: 24px;
   overflow-y: auto;
+  overflow: hidden;
 }
 
 .now-playing-header {
@@ -474,15 +475,12 @@
     gap: 8px;
     height: auto;
     padding: 16px 16px 24px; /* Aumentado el padding inferior */
-
   }
 
   .now-playing-left {
-    background-color: none;
     justify-content: flex-start; /* Alineación a la izquierda */
     text-align: left;
     padding: 0 8px;
-    opacity: 0.7;
   }
 
   /* Ajustes para el texto de la canción */
@@ -503,7 +501,7 @@
   }
 
   /* Eliminamos imagen y botón de favoritos */
-
+  .mini-track-image,
   .like-button {
     display: none;
   }
@@ -529,7 +527,7 @@
     height: 4px;
     appearance: none;
     -webkit-appearance: none;
-    /* background: var(--spotify-light-grey); */
+    background: var(--spotify-light-grey);
     border-radius: 2px;
     outline: none;
   }
@@ -551,23 +549,19 @@
   }
 
   .control-button {
-    margin-top: 18px;
-    font-size: 28px;
+    font-size: 24px;
     padding: 12px;
-    color: var(--spotify-green);
-  }
-
-  .control-button:hover {
-    color: var(--spotify-green);
+    color: var(--color-green-dark);
+    margin-top: 8px;
   }
 
   .play-button {
-    margin-top: 18px;
     width: 48px;
     height: 48px;
     font-size: 28px;
-    background-color: var(--color-green-pale);
+    background-color: var( --color-green-light);
     color: var(--spotify-black);
+    margin-top: 8px;
   }
 
   .now-playing-right {
@@ -633,17 +627,6 @@
   .player-bar {
     height: 70px;
   }
-
-  /* .player-bar {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    background-color: var(--color-green-pale);
-
-    opacity: 0.8;
-    border-top: 1px solid var(--spotify-light-grey);
-    padding: 16px;
-    height: 70px;
-  } */
 
   .now-playing-bar {
     grid-template-columns: 30% 40% 30%;
