@@ -1,48 +1,102 @@
-<div class="reproductor-container">
-  <!-- Información actual -->
-  <div class="info-actual" [ngStyle]="{'background-image': 'url(' + (cancionActual?.imagen || 'ruleta.jpg') + ')'}">
-    <div class="info-overlay">
-      <h2>{{cancionActual?.titulo || 'Selecciona una canción'}}</h2>
-      <p>{{cancionActual?.artista || 'Artista'}}</p>
+<div>
+  <div class="player-container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <fa-icon [icon]="iconoLista" class="text-white text-xl"></fa-icon>
+      <h2>Tu Biblioteca</h2>
     </div>
-  </div>
-
-  <!-- Controles principales -->
-  <div class="controles-principales">
-    <div class="barra-progreso">
-      <div class="tiempo-actual">{{tiempoActual}}</div>
-      <input type="range"
-             [value]="progresoActual"
-             (input)="actualizarProgreso($event)"
-             class="progreso-slider">
-      <div class="tiempo-total">{{cancionActual?.duracion || '0:00'}}</div>
-    </div>
-
-    <div class="botones-control">
-      <button (click)="anterior()" [disabled]="!hayAnterior()" class="btn-control">
-        <fa-icon [icon]="iconoAnterior"></fa-icon>
-      </button>
-      <button (click)="toggleReproduccion()" class="btn-control btn-principal">
-        <fa-icon [icon]="reproduciendo ? iconoPausa : iconoPlay"></fa-icon>
-      </button>
-      <button (click)="siguiente()" [disabled]="!haySiguiente()" class="btn-control">
-        <fa-icon [icon]="iconoSiguiente"></fa-icon>
-      </button>
-    </div>
-  </div>
-
-  <!-- Lista de canciones -->
-  <div class="lista-canciones">
-    <div *ngFor="let cancion of canciones"
-         (click)="seleccionarCancion(cancion)"
-         class="item-cancion"
-         [class.activa]="cancion.id === cancionActual?.id">
-      <img [src]="cancion.imagen" alt="Portada" class="mini-portada">
-      <div class="info-cancion">
-        <div class="titulo-cancion">{{cancion.titulo}}</div>
-        <div class="artista-cancion">{{cancion.artista}}</div>
+    <div class="playlist-list">
+      <div class="playlist-item" *ngFor="let cancion of canciones">
+        <img [src]="cancion.imagen" [alt]="cancion.titulo">
+        <div class="playlist-info">
+          <span class="playlist-name">{{cancion.titulo}}</span>
+          <span class="playlist-details">Canción • {{cancion.artista}}</span>
+        </div>
       </div>
-      <div class="duracion-cancion">{{cancion.duracion}}</div>
     </div>
   </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="now-playing-header">
+      <div class="header-controls">
+        <button class="header-button">
+          <fa-icon [icon]="iconoCorazon"></fa-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="current-track-info" *ngIf="cancionActual">
+      <img [src]="cancionActual.imagen" [alt]="cancionActual.titulo" class="current-track-image">
+      <div class="track-details">
+        <h1>{{cancionActual.titulo}}</h1>
+        <p>{{cancionActual.artista}}</p>
+      </div>
+    </div>
+
+    <div class="tracks-list">
+      <div class="track-item" *ngFor="let cancion of canciones; let i = index"
+           (click)="seleccionarCancion(cancion)"
+           [class.active]="cancion.id === cancionActual?.id">
+        <div class="track-number">{{i + 1}}</div>
+        <img [src]="cancion.imagen" [alt]="cancion.titulo" class="track-image">
+        <div class="track-info">
+          <div class="track-name">{{cancion.titulo}}</div>
+          <div class="track-artist">{{cancion.artista}}</div>
+        </div>
+        <div class="track-duration">{{cancion.duracion}}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Player Bar -->
+  <div class="player-bar">
+    <div class="now-playing-bar">
+      <div class="now-playing-left">
+        <img [src]="cancionActual?.imagen || 'ruleta.webp'" [alt]="cancionActual?.titulo" class="mini-track-image">
+        <div class="track-info">
+          <div class="track-name">{{cancionActual?.titulo || 'Selecciona una canción'}}</div>
+          <div class="track-artist">{{cancionActual?.artista || 'Artista'}}</div>
+        </div>
+        <button class="like-button">
+          <fa-icon [icon]="iconoCorazon"></fa-icon>
+        </button>
+      </div>
+
+      <div class="now-playing-center">
+        <div class="player-controls">
+          <button class="control-button" (click)="toggleShuffle()">
+            <fa-icon [icon]="iconoShuffle"></fa-icon>
+          </button>
+          <button class="control-button" (click)="anterior()" [disabled]="!hayAnterior()">
+            <fa-icon [icon]="iconoAnterior"></fa-icon>
+          </button>
+          <button class="play-button" (click)="toggleReproduccion()">
+            <fa-icon [icon]="reproduciendo ? iconoPausa : iconoPlay"></fa-icon>
+          </button>
+          <button class="control-button" (click)="siguiente()" [disabled]="!haySiguiente()">
+            <fa-icon [icon]="iconoSiguiente"></fa-icon>
+          </button>
+          <button class="control-button" (click)="toggleRepeat()">
+            <fa-icon [icon]="iconoRepetir"></fa-icon>
+          </button>
+        </div>
+        <div class="progress-bar">
+          <span class="time-current">{{tiempoActual}}</span>
+          <input type="range" class="progress-slider" [value]="progresoActual" (input)="actualizarProgreso($event)">
+          <span class="time-total">{{cancionActual?.duracion || '0:00'}}</span>
+        </div>
+      </div>
+
+      <div class="now-playing-right">
+        <button class="volume-button" (click)="toggleMute()">
+          <fa-icon [icon]="isMuted ? iconoMute : iconoVolumen"></fa-icon>
+        </button>
+        <input type="range" class="volume-slider" [value]="volumen" (input)="ajustarVolumen($event)">
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>

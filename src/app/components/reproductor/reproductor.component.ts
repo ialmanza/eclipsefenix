@@ -5,7 +5,13 @@ import {
   faPlay,
   faPause,
   faStepForward,
-  faStepBackward
+  faStepBackward,
+  faVolumeHigh,
+  faVolumeMute,
+  faShuffle,
+  faRepeat,
+  faHeart,
+  faListUl
 } from '@fortawesome/free-solid-svg-icons';
 
 interface Cancion {
@@ -24,11 +30,19 @@ interface Cancion {
   styleUrl: './reproductor.component.css'
 })
 export class ReproductorComponent implements OnInit {
-  // Definición de iconos
+  // Iconos
   iconoPlay = faPlay;
   iconoPausa = faPause;
   iconoAnterior = faStepBackward;
   iconoSiguiente = faStepForward;
+  iconoVolumen = faVolumeHigh;
+  iconoMute = faVolumeMute;
+  iconoShuffle = faShuffle;
+  iconoRepetir = faRepeat;
+  iconoCorazon = faHeart;
+  iconoLista = faListUl;
+
+
 
   canciones: Cancion[] = [
     {
@@ -119,11 +133,39 @@ export class ReproductorComponent implements OnInit {
   progresoActual: number = 0;
   tiempoActual: string = "0:00";
   audioElement: HTMLAudioElement | null = null;
+  volumen: number = 100;
+  volumenAnterior: number = 100;
+  isMuted: boolean = false;
+  isShuffleOn: boolean = false;
+  isRepeatOn: boolean = false;
+  cancionesShuffled: Cancion[] = [];
+  sidebarOpen: boolean = false;
 
   ngOnInit() {
     this.audioElement = new Audio();
     this.audioElement.addEventListener('timeupdate', this.actualizarTiempo.bind(this));
     this.audioElement.addEventListener('ended', this.alTerminar.bind(this));
+    this.audioElement.volume = this.volumen / 100;
+    this.cancionesShuffled = [...this.canciones];
+
+    // const playerBar = document.querySelector('.player-bar');
+    // const collapsedView = document.querySelector('.now-playing-collapsed');
+    // const expandButton = document.querySelector('.expanded-header-button');
+
+    // collapsedView!.addEventListener('click', () => {
+    //   playerBar!.classList.add('expanded');
+    // });
+
+    // expandButton!.addEventListener('click', () => {
+    //   playerBar!.classList.remove('expanded');
+    // });
+  }
+
+  ngOnDestroy() {
+    if (this.audioElement) {
+      this.audioElement.removeEventListener('timeupdate', this.actualizarTiempo.bind(this));
+      this.audioElement.removeEventListener('ended', this.alTerminar.bind(this));
+    }
   }
 
   seleccionarCancion(cancion: Cancion) {
@@ -138,6 +180,10 @@ export class ReproductorComponent implements OnInit {
   }
 
   toggleReproduccion() {
+    if (!this.cancionActual && this.canciones.length > 0) {
+      this.seleccionarCancion(this.canciones[0]);
+    }
+
     if (!this.cancionActual) return;
 
     if (this.reproduciendo) {
@@ -168,32 +214,104 @@ export class ReproductorComponent implements OnInit {
   }
 
   anterior() {
-    const indiceActual = this.canciones.findIndex(c => c.id === this.cancionActual?.id);
-    if (indiceActual > 0) {
-      this.seleccionarCancion(this.canciones[indiceActual - 1]);
+    if (this.isShuffleOn) {
+      const indiceActual = this.cancionesShuffled.findIndex(c => c.id === this.cancionActual?.id);
+      if (indiceActual > 0) {
+        this.seleccionarCancion(this.cancionesShuffled[indiceActual - 1]);
+      }
+    } else {
+      const indiceActual = this.canciones.findIndex(c => c.id === this.cancionActual?.id);
+      if (indiceActual > 0) {
+        this.seleccionarCancion(this.canciones[indiceActual - 1]);
+      }
     }
   }
 
   siguiente() {
-    const indiceActual = this.canciones.findIndex(c => c.id === this.cancionActual?.id);
-    if (indiceActual < this.canciones.length - 1) {
-      this.seleccionarCancion(this.canciones[indiceActual + 1]);
+    if (this.isShuffleOn) {
+      const indiceActual = this.cancionesShuffled.findIndex(c => c.id === this.cancionActual?.id);
+      if (indiceActual < this.cancionesShuffled.length - 1) {
+        this.seleccionarCancion(this.cancionesShuffled[indiceActual + 1]);
+      }
+    } else {
+      const indiceActual = this.canciones.findIndex(c => c.id === this.cancionActual?.id);
+      if (indiceActual < this.canciones.length - 1) {
+        this.seleccionarCancion(this.canciones[indiceActual + 1]);
+      }
     }
   }
 
   hayAnterior(): boolean {
-    return this.canciones.findIndex(c => c.id === this.cancionActual?.id) > 0;
+    const lista = this.isShuffleOn ? this.cancionesShuffled : this.canciones;
+    return lista.findIndex(c => c.id === this.cancionActual?.id) > 0;
   }
 
   haySiguiente(): boolean {
-    return this.canciones.findIndex(c => c.id === this.cancionActual?.id) < this.canciones.length - 1;
+    const lista = this.isShuffleOn ? this.cancionesShuffled : this.canciones;
+    return lista.findIndex(c => c.id === this.cancionActual?.id) < lista.length - 1;
   }
 
   alTerminar() {
-    this.reproduciendo = false;
-    if (this.haySiguiente()) {
-      this.siguiente();
-      this.toggleReproduccion();
+    if (this.isRepeatOn) {
+      if (this.audioElement) {
+        this.audioElement.currentTime = 0;
+        this.audioElement.play();
+      }
+    } else {
+      this.reproduciendo = false;
+      if (this.haySiguiente()) {
+        this.siguiente();
+        this.toggleReproduccion();
+      }
     }
+  }
+
+  // Nuevas funciones para el control de volumen
+  ajustarVolumen(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.volumen = Number(target.value);
+    if (this.audioElement) {
+      this.audioElement.volume = this.volumen / 100;
+    }
+    if (this.volumen === 0) {
+      this.isMuted = true;
+    } else {
+      this.isMuted = false;
+    }
+  }
+
+  toggleMute() {
+    if (this.audioElement) {
+      if (this.isMuted) {
+        this.volumen = this.volumenAnterior;
+        this.audioElement.volume = this.volumen / 100;
+      } else {
+        this.volumenAnterior = this.volumen;
+        this.volumen = 0;
+        this.audioElement.volume = 0;
+      }
+      this.isMuted = !this.isMuted;
+    }
+  }
+
+  // Funciones para shuffle y repeat
+  toggleShuffle() {
+    this.isShuffleOn = !this.isShuffleOn;
+    if (this.isShuffleOn) {
+      this.cancionesShuffled = [...this.canciones]
+        .map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+    } else {
+      this.cancionesShuffled = [...this.canciones];
+    }
+  }
+
+  toggleRepeat() {
+    this.isRepeatOn = !this.isRepeatOn;
+  }
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
   }
 }
