@@ -28,31 +28,79 @@ export class GalleryComponent {
       title: 'Encuentros',
       description: 'Nuestros encuentros',
       items: [
-        // {
-        //   type: 'video',
-        //   url: 'videos/cantando.mp4',
-        //   thumbnail: 'fotos/otras.webp',
-        //   caption: 'Rey León'
-        // },
         {
           type: 'image',
-          url: 'fotos/divertidas.webp',
-          thumbnail: 'fotos/divertidas.webp',
-          caption: 'Divertidas'
+          url: 'encuentros/abril2024.webp',
+          thumbnail: 'encuentros/abril2024.webp',
+          caption: 'Abril 2024'
         },
         {
           type: 'image',
-          url: 'fotos/divertidas1.webp',
-          thumbnail: 'fotos/divertidas1.webp',
-          caption: 'Divertidas'
+          url: 'encuentros/mayo2024.webp',
+          thumbnail: 'encuentros/mayo2024.webp',
+          caption: 'Mayo 2024'
         },
-        // {
-        //   type: 'video',
-        //   url: 'videos/bailando.mp4',
-        //   thumbnail: 'fotos/otras6.webp',
-        //   caption: 'Noche de Viernes'
-        // },
-        // Agregar más items...
+        {
+          type: 'image',
+          url: 'encuentros/agosto2024.webp',
+          thumbnail: 'encuentros/agosto2024.webp',
+          caption: 'Agosto 2024'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/sept2024hands.webp',
+          thumbnail: 'encuentros/sept2024hands.webp',
+          caption: 'Septiembre 2024 '
+        },
+        {
+          type: 'image',
+          url: 'encuentros/septiembre2024.webp',
+          thumbnail: 'encuentros/septiembre2024.webp',
+          caption: 'Septiembre 2024 '
+        },
+        {
+          type: 'image',
+          url: 'encuentros/octacuario2024webp',
+          thumbnail: 'encuentros/octacuario2024.webp',
+          caption: 'Octubre 2024'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/octhalloween2024.webp',
+          thumbnail: 'encuentros/octhalloween2024.webp',
+          caption: 'Octubre 2024'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/noviembre2024.webp',
+          thumbnail: 'encuentros/noviembre2024.webp',
+          caption: 'Noviembre 2024'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/diciembre2024.webp',
+          thumbnail: 'encuentros/diciembre2024.webp',
+          caption: 'Diciembre 2024'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/dicsantiago2024.webp',
+          thumbnail: 'encuentros/dicsantiago2024.webp',
+          caption: 'Diciembre Santiago 2024'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/enero2025.webp',
+          thumbnail: 'encuentros/enero2025.webp',
+          caption: 'Enero 2025'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/enerobskids2025.webp',
+          thumbnail: 'encuentros/enerobskids2025.webp',
+          caption: 'Enero Bendis 2025'
+        },
+
       ]
     },
     {
