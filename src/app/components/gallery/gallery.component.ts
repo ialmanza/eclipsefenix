@@ -60,7 +60,7 @@ export class GalleryComponent {
         },
         {
           type: 'image',
-          url: 'encuentros/octacuario2024webp',
+          url: 'encuentros/octacuario2024.webp',
           thumbnail: 'encuentros/octacuario2024.webp',
           caption: 'Octubre 2024'
         },
