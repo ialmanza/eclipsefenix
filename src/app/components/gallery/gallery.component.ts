@@ -111,19 +111,37 @@ export class GalleryComponent {
     },
     {
       title: 'Fotos familiares',
-      description: 'Corey y Riley',
+      description: 'Corey, Riley y familia',
       items: [
         {
           type: 'image',
-          url: 'https://chefeel.com/chefgeneralfiles/2021/12/tacos-1-scaled.jpg',
-          thumbnail: 'https://chefeel.com/chefgeneralfiles/2021/12/tacos-1-scaled.jpg',
-          caption: 'Tacos'
+          url: '/family/family.webp',
+          thumbnail: '/family/family.webp',
+          caption: 'Abu'
         },
         {
           type: 'image',
-          url: 'https://st1.uvnimg.com/dd/4c/fd6bdcac49059a6691566192be16/b0987e2c6277453cb094409ec360523a',
-          thumbnail: 'https://st1.uvnimg.com/dd/4c/fd6bdcac49059a6691566192be16/b0987e2c6277453cb094409ec360523a',
-          caption: 'Eolitos'
+          url: '/family_corey/corey.webp',
+          thumbnail: '/family_corey/corey.webp',
+          caption: 'Corey y Riley'
+        },
+        {
+          type: 'image',
+          url: '/family_corey/corey1.webp',
+          thumbnail: '/family_corey/corey1.webp',
+          caption: 'Familia'
+        },
+        {
+          type: 'image',
+          url: '/family_corey/corey2.webp',
+          thumbnail: '/family_corey/corey2.webp',
+          caption: 'Familia'
+        },
+        {
+          type: 'image',
+          url: '/family_corey/corey3.webp',
+          thumbnail: '/family_corey/corey3.webp',
+          caption: 'Familia'
         }
         // Agregar más items...
       ]
@@ -134,9 +152,45 @@ export class GalleryComponent {
       items: [
         {
           type: 'image',
-          url: 'fotos/familia.webp',
-          thumbnail: 'fotos/familia.webp',
-          caption: 'Está escondido el Mike'
+          url: '/riley/riley.webp',
+          thumbnail: '/riley/riley.webp',
+          caption: 'Say Say'
+        },
+        {
+          type: 'image',
+          url: '/riley/riley1.webp',
+          thumbnail: '/riley/riley1.webp',
+          caption: 'Say Say'
+        },
+        {
+          type: 'image',
+          url: '/riley/riley2.webp',
+          thumbnail: '/riley/riley2.webp',
+          caption: 'Say Say'
+        },
+        {
+          type: 'image',
+          url: '/riley/riley3.webp',
+          thumbnail: '/riley/riley3.webp',
+          caption: 'Say Say'
+        },
+        {
+          type: 'image',
+          url: '/riley/riley4.webp',
+          thumbnail: '/riley/riley4.webp',
+          caption: 'Say Say'
+        },
+        {
+          type: 'image',
+          url: '/riley/riley5.webp',
+          thumbnail: '/riley/riley5.webp',
+          caption: 'Say Say'
+        },
+        {
+          type: 'image',
+          url: '/riley/riley6.webp',
+          thumbnail: '/riley/riley6.webp',
+          caption: 'Say Say'
         }
         // Agregar más items...
       ]
@@ -145,43 +199,24 @@ export class GalleryComponent {
       title: 'Contigo en la distancia',
       description: 'Contigo en la distancia',
       items: [
-
         {
           type: 'image',
-          url: '/fotos/otras2.webp',
-          thumbnail: '/fotos/otras2.webp',
-          caption: 'La Caro'
+          url: '/distancia/Lily.webp',
+          thumbnail: '/distancia/Lily.webp',
+          caption: 'La Tía'
         },
         {
           type: 'image',
-          url: '/fotos/otras3.webp',
-          thumbnail: '/fotos/otras3.webp',
-          caption: 'La Caro'
+          url: '/distancia/Patry.webp',
+          thumbnail: '/distancia/Patry.webp',
+          caption: 'Patry'
         },
         {
           type: 'image',
-          url: '/fotos/otras4.webp',
-          thumbnail: '/fotos/otras4.webp',
-          caption: 'La Caro'
-        },
-        {
-          type: 'image',
-          url: '/fotos/otras5.webp',
-          thumbnail: '/fotos/otras5.webp',
-          caption: 'La Caro'
-        },
-        {
-          type: 'image',
-          url: '/fotos/otras.webp',
-          thumbnail: '/fotos/otras.webp',
-          caption: 'La Caro'
-        },
-        {
-          type: 'image',
-          url: '/fotos/otras1.webp',
-          thumbnail: '/fotos/otras1.webp',
-          caption: 'La Caro'
-        },
+          url: '/distancia/Sely.webp',
+          thumbnail: '/distancia/Sely.webp',
+          caption: 'Sely'
+        }
         // Agregar más items...
       ]
     },
@@ -189,43 +224,50 @@ export class GalleryComponent {
       title: 'Desde el cielo',
       description: 'Teddy',
       items: [
+        {
+          type: 'image',
+          url: '/teddy/teddy.webp',
+          thumbnail: '/teddy/teddy.webp',
+          caption: 'Teddy'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy1.webp',
+          thumbnail: '/teddy/teddy1.webp',
+          caption: 'Teddy'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy2.webp',
+          thumbnail: '/teddy/teddy2.webp',
+          caption: 'Teddy'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy3.webp',
+          thumbnail: '/teddy/teddy3.webp',
+          caption: 'Teddy'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy5.webp',
+          thumbnail: '/teddy/teddy5.webp',
+          caption: 'Velándote en las noches'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy6.webp',
+          thumbnail: '/teddy/teddy6.webp',
+          caption: 'Durmiendo juntos'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy4.webp',
+          thumbnail: '/teddy/teddy4.webp',
+          caption: 'Despertando juntos en la mañana'
+        }
 
-        {
-          type: 'image',
-          url: '/fotos/otras2.webp',
-          thumbnail: '/fotos/otras2.webp',
-          caption: 'La Caro'
-        },
-        {
-          type: 'image',
-          url: '/fotos/otras3.webp',
-          thumbnail: '/fotos/otras3.webp',
-          caption: 'La Caro'
-        },
-        {
-          type: 'image',
-          url: '/fotos/otras4.webp',
-          thumbnail: '/fotos/otras4.webp',
-          caption: 'La Caro'
-        },
-        {
-          type: 'image',
-          url: '/fotos/otras5.webp',
-          thumbnail: '/fotos/otras5.webp',
-          caption: 'La Caro'
-        },
-        {
-          type: 'image',
-          url: '/fotos/otras.webp',
-          thumbnail: '/fotos/otras.webp',
-          caption: 'La Caro'
-        },
-        {
-          type: 'image',
-          url: '/fotos/otras1.webp',
-          thumbnail: '/fotos/otras1.webp',
-          caption: 'La Caro'
-        },
+
         // Agregar más items...
       ]
     }
