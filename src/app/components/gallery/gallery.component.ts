@@ -66,6 +66,12 @@ export class GalleryComponent {
         },
         {
           type: 'image',
+          url: 'encuentros/acuario2oct.webp',
+          thumbnail: 'encuentros/acuario2oct.webp',
+          caption: 'Octubre 2024'
+        },
+        {
+          type: 'image',
           url: 'encuentros/octhalloween2024.webp',
           thumbnail: 'encuentros/octhalloween2024.webp',
           caption: 'Octubre 2024'
