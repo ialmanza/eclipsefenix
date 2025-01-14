@@ -147,18 +147,6 @@ export class ReproductorComponent implements OnInit {
     this.audioElement.addEventListener('ended', this.alTerminar.bind(this));
     this.audioElement.volume = this.volumen / 100;
     this.cancionesShuffled = [...this.canciones];
-
-    // const playerBar = document.querySelector('.player-bar');
-    // const collapsedView = document.querySelector('.now-playing-collapsed');
-    // const expandButton = document.querySelector('.expanded-header-button');
-
-    // collapsedView!.addEventListener('click', () => {
-    //   playerBar!.classList.add('expanded');
-    // });
-
-    // expandButton!.addEventListener('click', () => {
-    //   playerBar!.classList.remove('expanded');
-    // });
   }
 
   ngOnDestroy() {
@@ -168,14 +156,14 @@ export class ReproductorComponent implements OnInit {
     }
   }
 
+
   seleccionarCancion(cancion: Cancion) {
     this.cancionActual = cancion;
     if (this.audioElement) {
       this.audioElement.src = cancion.archivo;
       this.audioElement.load();
-      if (this.reproduciendo) {
-        this.audioElement.play();
-      }
+      this.audioElement.play();
+      this.reproduciendo = true;
     }
   }
 
