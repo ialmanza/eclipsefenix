@@ -270,6 +270,24 @@ export class GalleryComponent {
           url: '/teddy/teddy4.webp',
           thumbnail: '/teddy/teddy4.webp',
           caption: 'Despertando juntos en la mañana'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy7.webp',
+          thumbnail: '/teddy/teddy7.webp',
+          caption: 'Teddy'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy8.webp',
+          thumbnail: '/teddy/teddy8.webp',
+          caption: 'Teddy'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy9.webp',
+          thumbnail: '/teddy/teddy9.webp',
+          caption: 'Teddy'
         }
 
 
