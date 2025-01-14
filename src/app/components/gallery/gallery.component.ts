@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LightboxService } from './../../services/lightbox.service';
 import { FooterComponent } from "../footer/footer.component";
@@ -23,6 +23,11 @@ export interface GalleryItem {
   styleUrl: './gallery.component.css'
 })
 export class GalleryComponent {
+
+  @ViewChild('teddySection') teddySection!: ElementRef;
+  private audio: HTMLAudioElement;
+  private isPlayingAudio = false;
+
   gallerySections: GallerySection[] = [
     {
       title: 'Encuentros',
@@ -340,7 +345,12 @@ export class GalleryComponent {
     // }
   ];
 
-  constructor( public lightboxService: LightboxService) {}
+  constructor( public lightboxService: LightboxService) {
+    // Initialize audio element
+    this.audio = new Audio();
+    this.audio.src = '/musica/Toy Story 4 - Yo soy tu Amigo Fiel (Canción Español Latino) 1080p.mp3'; // Update with your actual path
+    this.audio.loop = true;
+  }
 
   ngOnInit(): void {
     this.validateVideoUrls();
@@ -356,6 +366,10 @@ export class GalleryComponent {
         }
       });
     });
+  }
+
+  ngOnDestroy() {
+    this.stopAudio();
   }
 
   openLightbox(item: GalleryItem): void {
@@ -400,4 +414,41 @@ export class GalleryComponent {
       behavior: 'smooth'
     });
   }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    if (this.teddySection) {
+      const teddyRect = this.teddySection.nativeElement.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Check if Teddy section is visible in viewport
+      if (teddyRect.top < windowHeight && teddyRect.bottom > 0) {
+        if (!this.isPlayingAudio) {
+          this.playAudio();
+        }
+      } else {
+        if (this.isPlayingAudio) {
+          this.stopAudio();
+        }
+      }
+    }
+  }
+
+  private playAudio() {
+    this.audio.play()
+      .then(() => {
+        this.isPlayingAudio = true;
+      })
+      .catch(error => {
+        console.error('Error playing audio:', error);
+      });
+  }
+
+  private stopAudio() {
+    this.audio.pause();
+    this.audio.currentTime = 0;
+    this.isPlayingAudio = false;
+  }
+
+
 }

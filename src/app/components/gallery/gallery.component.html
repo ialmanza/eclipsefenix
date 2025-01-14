@@ -8,11 +8,13 @@
     </header>
 
     <main>
-      <section *ngFor="let section of gallerySections" class="gallery-section"  [ngClass]="{'videos-section': section.description === 'Videitos'}">
+      <!-- <section *ngFor="let section of gallerySections"
+      class="gallery-section"
+      [ngClass]="{'videos-section': section.description === 'Videitos'}">
         <h2>{{ section.title }}</h2>
         <p class="section-description">{{ section.description }}</p>
 
-        <!-- Carruseles solo para la sección de videos -->
+
         <ng-container *ngIf="section.description === 'Videitos'">
           <div class="video-carousel-container">
             <div class="carousel-header">
@@ -72,6 +74,51 @@
             </div>
           </div>
         </div>
+      </section> -->
+      <section *ngFor="let section of gallerySections"
+        class="gallery-section"
+        [ngClass]="{'videos-section': section.description === 'Videitos'}">
+        <!-- Wrapper div for the Teddy section with template reference -->
+        <div #teddySection *ngIf="section.title === 'Desde el cielo'">
+          <h2>{{ section.title }}</h2>
+          <p class="section-description">{{ section.description }}</p>
+          <div class="gallery-grid">
+            <div
+              *ngFor="let item of section.items"
+              class="gallery-item"
+              [ngClass]="{ 'video-item': item.type === 'video' }"
+            >
+              <div class="item-container" (click)="openLightbox(item)">
+                <img [src]="item.thumbnail" [alt]="item.caption" loading="lazy" />
+                <div class="item-overlay">
+                  <span class="item-caption">{{ item.caption }}</span>
+                  <span *ngIf="item.type === 'video'" class="play-icon">▶</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content for non-Teddy sections -->
+        <ng-container *ngIf="section.title !== 'Desde el cielo'">
+          <h2>{{ section.title }}</h2>
+          <p class="section-description">{{ section.description }}</p>
+          <div class="gallery-grid">
+            <div
+              *ngFor="let item of section.items"
+              class="gallery-item"
+              [ngClass]="{ 'video-item': item.type === 'video' }"
+            >
+              <div class="item-container" (click)="openLightbox(item)">
+                <img [src]="item.thumbnail" [alt]="item.caption" loading="lazy" />
+                <div class="item-overlay">
+                  <span class="item-caption">{{ item.caption }}</span>
+                  <span *ngIf="item.type === 'video'" class="play-icon">▶</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
       </section>
     </main>
 
