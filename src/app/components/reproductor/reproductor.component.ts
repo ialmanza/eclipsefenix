@@ -144,7 +144,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 13,
       titulo: "RDM  - Imagine",
-      artista: "Indi",
+      artista: "Indra",
       duracion: "4:13",
       archivo: "/musica/RDM  - Imagine(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Indra.webp"
