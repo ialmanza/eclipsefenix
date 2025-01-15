@@ -47,83 +47,155 @@ export class ReproductorComponent implements OnInit {
   canciones: Cancion[] = [
     {
       id: 1,
-      titulo: "Flowers in your Hair",
-      artista: "Artista 1",
-      duracion: "2:45",
-      archivo: "/musica/Flowers in your Hair.mp3",
-      imagen: "/fotos/otras4.webp"
+      titulo: "Alan Walker _ Ava Max - Alone",
+      artista: "Roxy",
+      duracion: "4:05",
+      archivo: "/musica/Alan Walker _ Ava Max - Alone_ Pt. II(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Roxy.webp"
     },
     {
       id: 2,
-      titulo: "Liquid Planet",
-      artista: "Artista 2",
-      duracion: "3:24",
-      archivo: "/musica/liquid-planet.mp3",
-      imagen: "/fotos/otras4.webp"
+      titulo: "Amigos",
+      artista: "Daimita",
+      duracion: "2:54",
+      archivo: "/musica/Amigos(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Daimita.webp"
     },
     {
       id: 3,
-      titulo: "To You",
-      artista: "Artista 3",
-      duracion: "2:18",
-      archivo: "/musica/To You.mp3",
+      titulo: "Ángel Bonne - AMIGOS",
+      artista: "Maria",
+      duracion: "5:12",
+      archivo: "/musica/Ángel Bonne - AMIGOS(MP3_160K).mp3",
       imagen: "/fotos/otras4.webp"
     },
     {
       id: 4,
-      titulo: "Genuine",
-      artista: "Artista 4",
-      duracion: "2:47",
-      archivo: "/musica/Genuine.mp3",
-      imagen: "/fotos/otras4.webp"
+      titulo: "Billy Joel - Piano Man",
+      artista: "Einy",
+      duracion: "5:39",
+      archivo: "/musica/Billy Joel - Piano Man (Lyrics)(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Einy.webp"
     },
     {
       id: 5,
-      titulo: "In Your Hands",
-      artista: "Artista 5",
-      duracion: "2:11",
-      archivo: "/musica/In Your Hands.mp3",
-      imagen: "/fotos/otras4.webp"
+      titulo: "Bruno Mars - Count on Me",
+      artista: "La tía Lily",
+      duracion: "3:12",
+      archivo: "/musica/Bruno Mars - Count on Me (Official Lyric Video)(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Lily.webp"
     },
     {
       id: 6,
-      titulo: "Make It Happen",
-      artista: "Artista 6",
-      duracion: "2:11",
-      archivo: "/musica/Make It Happen.mp3",
-      imagen: "/fotos/otras4.webp"
+      titulo: "Color Esperanza Diego Torres",
+      artista: "Ney",
+      duracion: "4:24",
+      archivo: "/musica/Color Esperanza Diego Torres con letra(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Ney.webp"
     },
     {
       id: 7,
-      titulo: "Road Trip",
-      artista: "Artista 7",
-      duracion: "2:50",
-      archivo: "/musica/Road Trip.mp3",
-      imagen: "/fotos/otras4.webp"
+      titulo: "Contigo En La Distancia - César Portillo De La Luz",
+      artista: "Yude",
+      duracion: "3:28",
+      archivo: "/musica/Contigo En La Distancia - César Portillo De La Luz(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Yude.webp"
     },
     {
       id: 8,
-      titulo: "Spirit of Fire",
-      artista: "Artista 6",
-      duracion: "3:08",
-      archivo: "/musica/Spirit of Fire.mp3",
-      imagen: "/fotos/otras4.webp"
+      titulo: "Dionne Warwick - That_s What Friends Are For",
+      artista: "Dani",
+      duracion: "4:16",
+      archivo: "/musica/Dionne Warwick - That_s What Friends Are For (Lyrics)(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Dani.webp"
     },
     {
       id: 9,
-      titulo: "The Best Time",
-      artista: "Artista 9",
-      duracion: "2:21",
-      archivo: "/musica/The Best Time.mp3",
-      imagen: "/fotos/otras4.webp"
+      titulo: "En todas partes",
+      artista: "AGA",
+      duracion: "2:50",
+      archivo: "/musica/En todas partes(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Alieny.webp"
     },
     {
       id: 10,
-      titulo: "Different",
-      artista: "Artista 10",
-      duracion: "3:13",
-      archivo: "/musica/Different.mp3",
-      imagen: "/fotos/otras4.webp"
+      titulo: "La amistad - Laura Pausini",
+      artista: "Ilia",
+      duracion: "4:39",
+      archivo: "/musica/La amistad - Laura Pausini (lyrics) ♥(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Ilia.webp"
+    },
+    {
+      id: 11,
+      titulo: "No Me Voy - OV7",
+      artista: "Diana",
+      duracion: "4:07",
+      archivo: "/musica/No Me Voy - OV7 subtitulada(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Diana.webp"
+    },
+    {
+      id: 12,
+      titulo: "Nuestra Amistad (Tercer cielo)",
+      artista: "Eliany",
+      duracion: "3:15",
+      archivo: "/musica/Nuestra Amistad (Tercer cielo) _Letra_(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Eliany.webp"
+    },
+    {
+      id: 13,
+      titulo: "RDM  - Imagine",
+      artista: "Indi",
+      duracion: "4:13",
+      archivo: "/musica/RDM  - Imagine(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Indra.webp"
+    },
+    {
+      id: 14,
+      titulo: "Rihanna - Only Girl",
+      artista: "Iza",
+      duracion: "4:11",
+      archivo: "/musica/Rihanna - Only Girl (In The World)(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Iza.webp"
+    },
+    {
+      id: 15,
+      titulo: "Río Roma - Cuenta Conmigo",
+      artista: "Sai",
+      duracion: "3:38",
+      archivo: "/musica/Río Roma - Cuenta Conmigo (Cover Audio)(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Sai.webp"
+    },
+    {
+      id: 16,
+      titulo: "Sia - Chandelier",
+      artista: "Valeria",
+      duracion: "3:51",
+      archivo: "/musica/Sia - Chandelier (Official Video)(MP3_160K).mp3",
+      imagen: "/distancia/Sely.webp"
+    },
+    {
+      id: 17,
+      titulo: "TU AMISTAD ME HACE BIEN I Alex Campos",
+      artista: "Sely",
+      duracion: "4:07",
+      archivo: "/musica/TU AMISTAD ME HACE BIEN I Alex Campos I Vídeo Oficial(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Sely.webp"
+    },
+    {
+      id: 18,
+      titulo: "Se Llama Amistad - Beatriz Luengo",
+      artista: "Patry",
+      duracion: "3:22",
+      archivo: "/musica/Se Llama Amistad - Beatriz Luengo (Videoclip)(MP3_160K).mp3",
+      imagen: "/reproductoryfrases/Patry_.webp"
+    },
+    {
+      id: 19,
+      titulo: "Pedro Capo - La fiesta",
+      artista: "Mexico Wey",
+      duracion: "3:22",
+      archivo: "/musica/Pedro Capo - La fiesta.mpeg",
+      imagen: "/reproductoryfrases/Diana.webp"
     }
     // Añade más canciones según necesites
   ];

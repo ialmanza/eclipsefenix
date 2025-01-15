@@ -27,7 +27,7 @@ export class GalleryComponent {
   @ViewChild('teddySection') teddySection!: ElementRef;
   private audio: HTMLAudioElement;
   private isPlayingAudio = false;
-
+  carouselSections = ['Fotos familiares', 'Playa Say Say', 'Contigo en la distancia'];
   gallerySections: GallerySection[] = [
     {
       title: 'Encuentros',
@@ -44,6 +44,12 @@ export class GalleryComponent {
           url: 'encuentros/mayo2024.webp',
           thumbnail: 'encuentros/mayo2024.webp',
           caption: 'Mayo 2024'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/julio2024.webp',
+          thumbnail: 'encuentros/julio2024.webp',
+          caption: 'Julio 2024'
         },
         {
           type: 'image',
@@ -116,13 +122,37 @@ export class GalleryComponent {
     },
     {
       title: 'Fotos familiares',
-      description: 'Corey, Riley y familia',
+      description: 'Ohana significa familia y la familia nunca te abandona.',
       items: [
         {
           type: 'image',
           url: '/family/family.webp',
           thumbnail: '/family/family.webp',
           caption: 'Abu'
+        },
+        {
+          type: 'image',
+          url: '/family/family1.webp',
+          thumbnail: '/family/family1.webp',
+          caption: 'Familia'
+        },
+        {
+          type: 'image',
+          url: '/family/family2.webp',
+          thumbnail: '/family/family2.webp',
+          caption: 'Familia'
+        },
+        {
+          type: 'image',
+          url: '/family/family3.webp',
+          thumbnail: '/family/family3.webp',
+          caption: 'Familia'
+        },
+        {
+          type: 'image',
+          url: '/family/family4.webp',
+          thumbnail: '/family/family4.webp',
+          caption: 'Familia'
         },
         {
           type: 'image',
@@ -153,7 +183,7 @@ export class GalleryComponent {
     },
     {
       title: 'Playa Say Say',
-      description: 'Riley',
+      description: 'Nos fuimos con Riley!',
       items: [
         {
           type: 'image',
@@ -196,13 +226,25 @@ export class GalleryComponent {
           url: '/riley/riley6.webp',
           thumbnail: '/riley/riley6.webp',
           caption: 'Say Say'
+        },
+        {
+          type: 'image',
+          url: '/riley/riley7.webp',
+          thumbnail: '/riley/riley7.webp',
+          caption: 'Say Say'
+        },
+        {
+          type: 'image',
+          url: '/riley/riley8.webp',
+          thumbnail: '/riley/riley8.webp',
+          caption: 'Say Say'
         }
         // Agregar más items...
       ]
     },
     {
       title: 'Contigo en la distancia',
-      description: 'Contigo en la distancia',
+      description: 'Ausentes físicamente pero siempre presentes.',
       items: [
         {
           type: 'image',
@@ -287,6 +329,12 @@ export class GalleryComponent {
           type: 'image',
           url: '/teddy/teddy9.webp',
           thumbnail: '/teddy/teddy9.webp',
+          caption: 'Teddy'
+        },
+        {
+          type: 'image',
+          url: '/teddy/teddy10.webp',
+          thumbnail: '/teddy/teddy10.webp',
           caption: 'Teddy'
         }
 
@@ -388,6 +436,22 @@ export class GalleryComponent {
 
   ngOnDestroy() {
     this.stopAudio();
+  }
+
+  isCarouselSection(title: string): boolean {
+    return this.carouselSections.includes(title);
+  }
+
+  scrollCarouselImage(container: HTMLElement, direction: 'left' | 'right'): void {
+    const scrollAmount = container.offsetWidth;
+    const newScrollPosition = direction === 'left'
+      ? container.scrollLeft - scrollAmount
+      : container.scrollLeft + scrollAmount;
+
+    container.scrollTo({
+      left: newScrollPosition,
+      behavior: 'smooth'
+    });
   }
 
   openLightbox(item: GalleryItem): void {
