@@ -55,7 +55,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 2,
-      titulo: "Amigos",
+      titulo: "Enanitos Verdes - Amigos",
       artista: "Daimita",
       duracion: "2:54",
       archivo: "/musica/Amigos(MP3_160K).mp3",
@@ -87,7 +87,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 6,
-      titulo: "Color Esperanza Diego Torres",
+      titulo: "Diego Torres - Color Esperanza",
       artista: "Ney",
       duracion: "4:24",
       archivo: "/musica/Color Esperanza Diego Torres con letra(MP3_160K).mp3",
@@ -111,7 +111,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 9,
-      titulo: "En todas partes",
+      titulo: "Habana Blues - En todas partes",
       artista: "AGA",
       duracion: "2:50",
       archivo: "/musica/En todas partes(MP3_160K).mp3",
@@ -192,7 +192,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 19,
       titulo: "Pedro Capo - La fiesta",
-      artista: "Mexico Wey",
+      artista: "Diana",
       duracion: "3:22",
       archivo: "/musica/Pedro Capo - La fiesta.mpeg",
       imagen: "/reproductoryfrases/Diana.webp"
@@ -311,17 +311,47 @@ export class ReproductorComponent implements OnInit {
     return lista.findIndex(c => c.id === this.cancionActual?.id) < lista.length - 1;
   }
 
+  // alTerminar() {
+  //   if (this.isRepeatOn) {
+  //     if (this.audioElement) {
+  //       this.audioElement.currentTime = 0;
+  //       this.audioElement.play();
+  //     }
+  //   } else {
+  //     this.reproduciendo = false;
+  //     if (this.haySiguiente()) {
+  //       this.siguiente();
+  //       this.toggleReproduccion();
+  //     }
+  //   }
+  // }
+
   alTerminar() {
     if (this.isRepeatOn) {
+      // Si está activada la repetición, reinicia la misma canción
       if (this.audioElement) {
         this.audioElement.currentTime = 0;
         this.audioElement.play();
       }
     } else {
+      // Si no está en modo repetición, reproduce la siguiente canción
       this.reproduciendo = false;
-      if (this.haySiguiente()) {
-        this.siguiente();
-        this.toggleReproduccion();
+
+      // Determina qué lista usar basado en si el modo aleatorio está activado
+      const listaActual = this.isShuffleOn ? this.cancionesShuffled : this.canciones;
+      const indiceActual = listaActual.findIndex(c => c.id === this.cancionActual?.id);
+
+      // Si hay una siguiente canción en la lista
+      if (indiceActual < listaActual.length - 1) {
+        // Reproduce la siguiente canción
+        this.seleccionarCancion(listaActual[indiceActual + 1]);
+        this.reproduciendo = true;
+      } else {
+        // Si es la última canción, vuelve al principio de la lista
+        if (listaActual.length > 0) {
+          this.seleccionarCancion(listaActual[0]);
+          this.reproduciendo = true;
+        }
       }
     }
   }
