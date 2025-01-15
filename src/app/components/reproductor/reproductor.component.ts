@@ -196,6 +196,14 @@ export class ReproductorComponent implements OnInit {
       duracion: "3:22",
       archivo: "/musica/Pedro Capo - La fiesta.mpeg",
       imagen: "/reproductoryfrases/Diana.webp"
+    },
+    {
+      id: 20,
+      titulo: "Laura Pausini - En Cambio No",
+      artista: "Israel",
+      duracion: "3:54",
+      archivo: "/musica/Laura Pausini - En Cambio No (Official Music Video)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Israel.webp"
     }
     // Añade más canciones según necesites
   ];
@@ -310,21 +318,6 @@ export class ReproductorComponent implements OnInit {
     const lista = this.isShuffleOn ? this.cancionesShuffled : this.canciones;
     return lista.findIndex(c => c.id === this.cancionActual?.id) < lista.length - 1;
   }
-
-  // alTerminar() {
-  //   if (this.isRepeatOn) {
-  //     if (this.audioElement) {
-  //       this.audioElement.currentTime = 0;
-  //       this.audioElement.play();
-  //     }
-  //   } else {
-  //     this.reproduciendo = false;
-  //     if (this.haySiguiente()) {
-  //       this.siguiente();
-  //       this.toggleReproduccion();
-  //     }
-  //   }
-  // }
 
   alTerminar() {
     if (this.isRepeatOn) {
