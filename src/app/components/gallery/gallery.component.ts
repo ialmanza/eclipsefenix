@@ -260,9 +260,9 @@ export class GalleryComponent {
         },
         {
           type: 'image',
-          url: '/distancia/Sely.webp',
-          thumbnail: '/distancia/Sely.webp',
-          caption: 'Sely'
+          url: '/distancia/Valeria.webp',
+          thumbnail: '/distancia/Valeria.webp',
+          caption: 'Valeria'
         }
         // Agregar más items...
       ]

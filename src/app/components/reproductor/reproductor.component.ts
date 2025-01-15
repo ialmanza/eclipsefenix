@@ -67,7 +67,7 @@ export class ReproductorComponent implements OnInit {
       artista: "Maria",
       duracion: "5:12",
       archivo: "/musica/Ángel Bonne - AMIGOS(MP3_160K).mp3",
-      imagen: "/fotos/otras4.webp"
+      imagen: "/reproductoryfrases/Maria.webp"
     },
     {
       id: 4,
@@ -95,7 +95,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 7,
-      titulo: "Contigo En La Distancia - César Portillo De La Luz",
+      titulo: "César Portillo De La Luz - Contigo En La Distancia",
       artista: "Yude",
       duracion: "3:28",
       archivo: "/musica/Contigo En La Distancia - César Portillo De La Luz(MP3_160K).mp3",
@@ -119,7 +119,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 10,
-      titulo: "La amistad - Laura Pausini",
+      titulo: "Laura Pausini - La amistad",
       artista: "Ilia",
       duracion: "4:39",
       archivo: "/musica/La amistad - Laura Pausini (lyrics) ♥(MP3_160K).mp3",
@@ -127,7 +127,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 11,
-      titulo: "No Me Voy - OV7",
+      titulo: "OV7 - No Me Voy",
       artista: "Diana",
       duracion: "4:07",
       archivo: "/musica/No Me Voy - OV7 subtitulada(MP3_160K).mp3",
@@ -135,7 +135,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 12,
-      titulo: "Nuestra Amistad (Tercer cielo)",
+      titulo: "Tercer cielo - Nuestra Amistad ",
       artista: "Eliany",
       duracion: "3:15",
       archivo: "/musica/Nuestra Amistad (Tercer cielo) _Letra_(MP3_160K).mp3",
@@ -144,7 +144,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 13,
       titulo: "RDM  - Imagine",
-      artista: "Indra",
+      artista: "Indira",
       duracion: "4:13",
       archivo: "/musica/RDM  - Imagine(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Indra.webp"
@@ -175,7 +175,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 17,
-      titulo: "TU AMISTAD ME HACE BIEN I Alex Campos",
+      titulo: "Alex Campos - Tu Amistad Me Hace Bien",
       artista: "Sely",
       duracion: "4:07",
       archivo: "/musica/TU AMISTAD ME HACE BIEN I Alex Campos I Vídeo Oficial(MP3_160K).mp3",
@@ -183,7 +183,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 18,
-      titulo: "Se Llama Amistad - Beatriz Luengo",
+      titulo: "Beatriz Luengo - Se Llama Amistad",
       artista: "Patry",
       duracion: "3:22",
       archivo: "/musica/Se Llama Amistad - Beatriz Luengo (Videoclip)(MP3_160K).mp3",
@@ -191,7 +191,7 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 19,
-      titulo: "Pedro Capo - La fiesta",
+      titulo: "Pedro Capo - La Fiesta",
       artista: "Diana",
       duracion: "3:22",
       archivo: "/musica/Pedro Capo - La fiesta.mpeg",
@@ -199,6 +199,14 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 20,
+      titulo: "Friends Theme Song - I_ll Be There For You",
+      artista: "Israel",
+      duracion: "3:54",
+      archivo: "/musica/_I_ll Be There For You_ (Friends Theme Song)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Claudia.webp"
+    },
+    {
+      id: 21,
       titulo: "Laura Pausini - En Cambio No",
       artista: "Israel",
       duracion: "3:54",
