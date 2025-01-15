@@ -200,7 +200,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 20,
       titulo: "Friends Theme Song - I_ll Be There For You",
-      artista: "Israel",
+      artista: "Claudia favorita",
       duracion: "3:54",
       archivo: "/musica/_I_ll Be There For You_ (Friends Theme Song)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Claudia.webp"
