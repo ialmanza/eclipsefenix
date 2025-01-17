@@ -1,11 +1,4 @@
-/* :host {
-  --spotify-black: #121212;
-  --spotify-green: #1DB954;
-  --spotify-white: #FFFFFF;
-  --spotify-grey: #B3B3B3;
-  --spotify-dark-grey: #282828;
-  --spotify-light-grey: #404040;
-} */
+
 
 :host {
   --spotify-black: var(--color-green-dark);
@@ -36,16 +29,6 @@
   color: var(--spotify-white);
 }
 
-/* .player-container {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  grid-template-rows: 1fr auto;
-  height: 100vh;
-  height: 100dvh;
-  background-color: var(--spotify-black);
-  color: var(--spotify-white);
-  overflow: hidden;
-} */
 
 .sidebar {
   background-color: var(--spotify-black);
@@ -84,7 +67,7 @@
 .playlist-item img {
   width: 48px;
   height: 48px;
-  border-radius: 4px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
@@ -142,6 +125,7 @@
   width: 232px;
   height: 232px;
   box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
 }
 
 .track-details h1 {
