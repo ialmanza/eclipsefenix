@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -112,7 +112,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 9,
       titulo: "Habana Blues - En todas partes",
-      artista: "AGA",
+      artista: "Alieny",
       duracion: "2:50",
       archivo: "/musica/En todas partes(MP3_160K).mp3",
       imagen: "/reproductoryfrases/Alieny.webp"
@@ -212,6 +212,38 @@ export class ReproductorComponent implements OnInit {
       duracion: "3:54",
       archivo: "/musica/Laura Pausini - En Cambio No (Official Music Video)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Israel.webp"
+    },
+    {
+      id: 22,
+      titulo: "La Oreja de Van Gogh - Nadie Como Tú",
+      artista: "Arianna",
+      duracion: "3:25",
+      archivo: "/musica/La Oreja de Van Gogh - Nadie Como Tú (Audio)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Arianna.webp"
+    },
+    {
+      id: 23,
+      titulo: "Melendi - El Cielo Nunca Cambiará",
+      artista: "Iliennis",
+      duracion: "4:14",
+      archivo: "/musica/Melendi - El Cielo Nunca Cambiará(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Ilieny.webp"
+    },
+    {
+      id: 24,
+      titulo: "Manuel Carrasco - Qué Bonito Es Querer",
+      artista: "Claudia 3P",
+      duracion: "4:31",
+      archivo: "/musica/Manuel Carrasco - Qué Bonito Es Querer (Video Oficial)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Claudia3p.webp"
+    },
+    {
+      id: 25,
+      titulo: "Rihanna - Umbrella",
+      artista: "Muñe",
+      duracion: "4:14",
+      archivo: "/musica/Rihanna - Umbrella (Orange Version) (Official Music Video) ft. JAY-Z(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Muñe.webp"
     }
     // Añade más canciones según necesites
   ];
@@ -228,6 +260,8 @@ export class ReproductorComponent implements OnInit {
   isRepeatOn: boolean = false;
   cancionesShuffled: Cancion[] = [];
   sidebarOpen: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.audioElement = new Audio();
@@ -246,6 +280,7 @@ export class ReproductorComponent implements OnInit {
 
 
   seleccionarCancion(cancion: Cancion) {
+    this.cancionActual = {...cancion};
     this.cancionActual = cancion;
     if (this.audioElement) {
       this.audioElement.src = cancion.archivo;
@@ -253,6 +288,7 @@ export class ReproductorComponent implements OnInit {
       this.audioElement.play();
       this.reproduciendo = true;
     }
+    this.cdr.detectChanges();
   }
 
   toggleReproduccion() {
