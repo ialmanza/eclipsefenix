@@ -244,6 +244,22 @@ export class ReproductorComponent implements OnInit {
       duracion: "4:14",
       archivo: "/musica/Rihanna - Umbrella (Orange Version) (Official Music Video) ft. JAY-Z(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Muñe.webp"
+    },
+    {
+      id: 26,
+      titulo: "Yami Safdie_ Camilo - Querida Yo",
+      artista: "Lis",
+      duracion: "1:57",
+      archivo: "/musica/Yami Safdie_ Camilo - Querida Yo (Official Video)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Lisnaydis.webp"
+    },
+    {
+      id: 27,
+      titulo: "Pablo López y Antonio Orozco - _Lo saben mis zapatos",
+      artista: "Lily (no tía)",
+      duracion: "4:48",
+      archivo: "/musica/Pablo López y Antonio Orozco – _Lo saben mis zapatos_ (Pablo López Sin Anestesia)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Lilyy.webp"
     }
     // Añade más canciones según necesites
   ];

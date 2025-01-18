@@ -35,19 +35,19 @@ export class BannerComponent implements OnInit {
 
   services: Service[] = [
     {
-      nombre: 'Persona Uno',
-      description: '« Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. »',
-      imagen: 'fotos/otras4.webp'
+      nombre: 'Israel',
+      description: 'Una amistad no crece por la presencia de las personas sino por la magia de saber que aunque no las ves las llevas siempre en el corazón.',
+      imagen: '/reproductoryfrases/Israel.webp'
     },
     {
-      nombre: 'Persona Dos',
-      description: '« Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. »',
-      imagen: 'fotos/otras4.webp'
+      nombre: 'Israel',
+      description: 'Tengo una amiga que aunque se fue a vivir lejos... siempre tendrá un espacio en mi corazón.',
+      imagen: '/reproductoryfrases/Israel.webp'
     },
     {
-      nombre: 'Persona Tres',
-      description: '« Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. »',
-      imagen: 'fotos/otras4.webp'
+      nombre: 'Israel',
+      description: 'Te deseo lo mejor para tu futuro, que encuentres lo que estás buscando y que seas feliz. No olvides que aquí siempre vas a tener un amigo.',
+      imagen: '/reproductoryfrases/Israel.webp'
     },
     {
       nombre: 'Persona Cuatro',
