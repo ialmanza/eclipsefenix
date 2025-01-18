@@ -241,6 +241,10 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 .control-button {

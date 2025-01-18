@@ -140,6 +140,7 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  border-radius: 1.5rem;
 }
 
 .gallery-item:hover img {
@@ -308,5 +309,80 @@
 
   .section-description {
     font-size: 1rem;
+  }
+}
+
+
+/* Estilos para el carrusel */
+.carousel-container {
+  display: none; /* Oculto por defecto en desktop */
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.carousel-item {
+  flex: 0 0 90%;
+  scroll-snap-align: center;
+  margin-right: 10px;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.carousel-button {
+  background-color: var(--color-green-medium);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-button:hover {
+  background-color: var(--color-green-dark);
+}
+
+/* Media queries para móvil */
+@media (max-width: 768px) {
+  /* Ocultar grid en móvil para las secciones específicas */
+  .carousel-section .gallery-grid {
+    display: none;
+  }
+
+  /* Mostrar carrusel en móvil */
+  .carousel-section .carousel-container {
+    display: block;
+    margin: 0 -15px; /* Compensar el padding del contenedor */
+    padding: 0 15px;
+  }
+
+  .carousel-item {
+    flex: 0 0 85%;
+    margin-right: 15px;
   }
 }
