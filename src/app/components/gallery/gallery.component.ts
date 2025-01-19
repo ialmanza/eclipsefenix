@@ -28,6 +28,7 @@ export class GalleryComponent {
   private audio: HTMLAudioElement;
   private isPlayingAudio = false;
   carouselSections = ['Fotos familiares', 'Playa Say Say', 'Contigo en la distancia'];
+
   gallerySections: GallerySection[] = [
     {
       title: 'Encuentros',
@@ -49,6 +50,12 @@ export class GalleryComponent {
           type: 'image',
           url: 'encuentros/julio2024.webp',
           thumbnail: 'encuentros/julio2024.webp',
+          caption: 'Julio 2024'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/julio2024.webp',
+          thumbnail: 'encuentros/juliogrupal2024.webp',
           caption: 'Julio 2024'
         },
         {
@@ -177,7 +184,14 @@ export class GalleryComponent {
           url: '/family_corey/corey3.webp',
           thumbnail: '/family_corey/corey3.webp',
           caption: 'Familia'
+        },
+        {
+          type: 'image',
+          url: '/family/family6.webp',
+          thumbnail: '/family/family6.webp',
+          caption: 'Familia'
         }
+
         // Agregar más items...
       ]
     },
@@ -263,6 +277,12 @@ export class GalleryComponent {
           url: '/distancia/Valeria.webp',
           thumbnail: '/distancia/Valeria.webp',
           caption: 'Valeria'
+        },
+        {
+          type: 'image',
+          url: '/distancia/Sai.webp',
+          thumbnail: '/distancia/Sai.webp',
+          caption: 'Say'
         }
         // Agregar más items...
       ]

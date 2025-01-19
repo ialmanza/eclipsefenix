@@ -260,6 +260,14 @@ export class ReproductorComponent implements OnInit {
       duracion: "4:48",
       archivo: "/musica/Pablo López y Antonio Orozco – _Lo saben mis zapatos_ (Pablo López Sin Anestesia)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Lilyy.webp"
+    },
+    {
+      id: 28,
+      titulo: "Pie Pequeño - Maravilla Es Vivir",
+      artista: "Liz",
+      duracion: "3:03",
+      archivo: "/musica/Pie Pequeño - Maravilla Es Vivir (Esta Vida Es Maravilla)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Lilyy.webp"
     }
     // Añade más canciones según necesites
   ];

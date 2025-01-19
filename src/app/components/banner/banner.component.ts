@@ -40,19 +40,60 @@ export class BannerComponent implements OnInit {
       imagen: '/reproductoryfrases/Israel.webp'
     },
     {
+      nombre: 'Daimita',
+      description: 'Habrá nervios...habrá emoción...habrá deseos....también algunas lágrimas, pero la mayoría de alegria; xq todo comienzo trae cosas buenas y malas. Muchas cosas en tu vida cambiarán  ,pero lo q siempre tendrás en esta  etapa es nuestro apoyo y nuestro cariño!!! ...cerca  o lejos siempre vamos a estar para Ti.',
+      imagen: '/reproductoryfrases/Daimita.webp'
+    },
+    {
+      nombre:'Maria',
+      description: 'Tu potencial es infinito',
+      imagen: '/reproductoryfrases/Maria.webp'
+    },
+    {
+      nombre:'Sely',
+      description: '"Eres unica...no dejes apagar tu luz y brilla"',
+      imagen: '/reproductoryfrases/Sely.webp'
+    },
+    {
+      nombre:'Yude',
+      description: 'Lo importante no es lo q tenemos en la vida, sino a quien tenemos en ella.',
+      imagen: '/reproductoryfrases/Yude.webp'
+    },
+    {
       nombre: 'Israel',
       description: 'Tengo una amiga que aunque se fue a vivir lejos... siempre tendrá un espacio en mi corazón.',
       imagen: '/reproductoryfrases/Israel.webp'
     },
+    {
+      nombre:'Claudia 3P',
+      description: 'Tu luz ilumina donde quiera que llegas.',
+      imagen: '/reproductoryfrases/Claudia3p.webp'
+    },
+    {
+      nombre:'Eyni',
+      description: 'Dream big Amá!!.',
+      imagen: '/reproductoryfrases/Einy.webp'
+    },
+    {
+      nombre:'Say',
+      description: '💖Eres la artista de tu propio destino, no dejes nunca que nadie tome el pincel y pinte tu futuro',
+      imagen: '/reproductoryfrases/Sai.webp'
+    },
+
+
+
+
+
+
     {
       nombre: 'Israel',
       description: 'Te deseo lo mejor para tu futuro, que encuentres lo que estás buscando y que seas feliz. No olvides que aquí siempre vas a tener un amigo.',
       imagen: '/reproductoryfrases/Israel.webp'
     },
     {
-      nombre: 'Persona Cuatro',
-      description: '« Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. »',
-      imagen: 'fotos/otras4.webp'
+      nombre: 'Patry',
+      description: 'Quiero que todo te salga bien, que rías en voz alta, que cada sueño se cumpla, que alcances cada meta, quiero verte ganando en la vida.',
+      imagen: '/reproductoryfrases/Patry_.webp'
     }
   ];
 
