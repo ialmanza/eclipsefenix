@@ -267,7 +267,7 @@ export class ReproductorComponent implements OnInit {
       artista: "Liz",
       duracion: "3:03",
       archivo: "/musica/Pie Pequeño - Maravilla Es Vivir (Esta Vida Es Maravilla)(MP3_128K).mp3",
-      imagen: "/reproductoryfrases/Lilyy.webp"
+      imagen: "/reproductoryfrases/Liz.webp"
     }
     // Añade más canciones según necesites
   ];

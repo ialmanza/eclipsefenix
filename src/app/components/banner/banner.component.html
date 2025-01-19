@@ -7,20 +7,20 @@
     </div>
 
     <div class="services-showcase">
-      <div class="service-card" *ngFor="let service of services; let i = index"
+      <div class="service-card" *ngFor="let frase of frases; let i = index"
            [@fadeSlide]
            [class.active]="i === currentIndex">
         <div class="testimonial-card">
           <div class="testimonial-content">
             <fa-icon [icon]="faQuoteLeft" class="quote-icon"></fa-icon>
-            <p class="quote-text">{{service.description}}</p>
+            <p class="quote-text">{{frase.description}}</p>
           </div>
           <div class="testimonial-author">
             <div class="author-image">
-              <img [src]="service.imagen" [alt]="service.nombre">
+              <img [src]="frase.imagen" [alt]="frase.nombre">
             </div>
             <div class="author-info">
-              <h4 class="author-name">{{service.nombre}}</h4>
+              <h4 class="author-name">{{frase.nombre}}</h4>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="banner-indicators">
-      <span *ngFor="let service of services; let i = index"
+      <span *ngFor="let frase of frases; let i = index"
             [class.active]="i === currentIndex"
             (click)="setCurrentIndex(i)">
       </span>

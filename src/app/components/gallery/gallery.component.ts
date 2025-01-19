@@ -54,7 +54,7 @@ export class GalleryComponent {
         },
         {
           type: 'image',
-          url: 'encuentros/julio2024.webp',
+          url: 'encuentros/juliogrupal2024.webp',
           thumbnail: 'encuentros/juliogrupal2024.webp',
           caption: 'Julio 2024'
         },
