@@ -144,7 +144,7 @@ export class BannerComponent implements OnInit {
     },
     {
       nombre:'Say',
-      description: '💖Jamás dudes de las gran madre que eres fíjate si eres increíble que tienes muchas hij@s en una comunidad.',
+      description: '💖Jamás dudes de la gran madre que eres fíjate si eres increíble que tienes muchas hij@s en una comunidad.',
       imagen: '/reproductoryfrases/Sai.webp'
     },
     {
@@ -294,7 +294,7 @@ export class BannerComponent implements OnInit {
     },
     {
       nombre:'Indi',
-      description: 'Ill be there',
+      description: `I'll be there`,
       imagen: '/reproductoryfrases/Indra.webp'
     },
     {
