@@ -200,7 +200,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 20,
       titulo: "Friends Theme Song - I_ll Be There For You",
-      artista: "Claudia favorita",
+      artista: "Claudia",
       duracion: "3:54",
       archivo: "/musica/_I_ll Be There For You_ (Friends Theme Song)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Claudia.webp"
@@ -232,7 +232,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 24,
       titulo: "Manuel Carrasco - Qué Bonito Es Querer",
-      artista: "Claudia 3P",
+      artista: "Claudia 🐤🐤🐤🐤",
       duracion: "4:31",
       archivo: "/musica/Manuel Carrasco - Qué Bonito Es Querer (Video Oficial)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Claudia3p.webp"
@@ -268,6 +268,14 @@ export class ReproductorComponent implements OnInit {
       duracion: "3:03",
       archivo: "/musica/Pie Pequeño - Maravilla Es Vivir (Esta Vida Es Maravilla)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Liz.webp"
+    },
+    {
+      id: 29,
+      titulo: "Kelly Clarkson - Underneath the Tree",
+      artista: "Yanet",
+      duracion: "3:03",
+      archivo: "/musica/Kelly Clarkson - Underneath the Tree (Official Audio)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Yanet.webp"
     }
     // Añade más canciones según necesites
   ];

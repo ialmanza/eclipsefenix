@@ -48,12 +48,6 @@ export class GalleryComponent {
         },
         {
           type: 'image',
-          url: 'encuentros/julio2024.webp',
-          thumbnail: 'encuentros/julio2024.webp',
-          caption: 'Julio 2024'
-        },
-        {
-          type: 'image',
           url: 'encuentros/juliogrupal2024.webp',
           thumbnail: 'encuentros/juliogrupal2024.webp',
           caption: 'Julio 2024'
@@ -190,7 +184,19 @@ export class GalleryComponent {
           url: '/family/family6.webp',
           thumbnail: '/family/family6.webp',
           caption: 'Familia'
-        }
+        },
+        {
+          type: 'image',
+          url: '/family/family7.webp',
+          thumbnail: '/family/family7.webp',
+          caption: 'Familia'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/julio2024.webp',
+          thumbnail: 'encuentros/julio2024.webp',
+          caption: 'Familia'
+        },
 
         // Agregar más items...
       ]
@@ -357,78 +363,9 @@ export class GalleryComponent {
           thumbnail: '/teddy/teddy10.webp',
           caption: 'Teddy'
         }
-
-
         // Agregar más items...
       ]
     }
-    // {
-    //   title: 'También tenemos videos',
-    //   description: 'Videitos',
-    //   items: [
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video1.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video2.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video3.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video4.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video5.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video6.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video7.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video8.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     {
-    //       type: 'video',
-    //       url: '/videos/video9.mp4',
-    //       thumbnail: '/fotos/otras4.webp',
-    //       caption: 'Dale Play'
-    //     },
-    //     // Agregar más items...
-    //   ]
-    // }
   ];
 
   constructor( public lightboxService: LightboxService) {
