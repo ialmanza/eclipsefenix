@@ -276,7 +276,23 @@ export class ReproductorComponent implements OnInit {
       duracion: "3:03",
       archivo: "/musica/Kelly Clarkson - Underneath the Tree (Official Audio)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Yanet.webp"
-    }
+    },
+    {
+      id: 30,
+      titulo: "Katy Perry - Firework",
+      artista: "Claudia 🦋",
+      duracion: "3:53",
+      archivo: "/musica/Katy Perry - Firework (Official Music Video)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Claudia_M.webp"
+    },
+    {
+      id: 31,
+      titulo: "Coldplay - Greatest Hits Song Full Album",
+      artista: "Einy",
+      duracion: "55:20",
+      archivo: "/musica/Coldplay Greatest Hits Song Full Album - Coldplay Best Music Playlist(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Einy.webp"
+    },
     // Añade más canciones según necesites
   ];
 
