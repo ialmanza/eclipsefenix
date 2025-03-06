@@ -40,6 +40,16 @@ export class BannerComponent implements OnInit {
       imagen: '/reproductoryfrases/Israel.webp'
     },
     {
+      nombre:'Alieny',
+      description: 'Gracias por hacer que lo ordinario se vuelva extraordinario cada vez que coincidimos en fenix.',
+      imagen: '/reproductoryfrases/Alieny.webp'
+    },
+    {
+      nombre:'Yenisel',
+      description: 'Tu liderazgo y amor han transformado no solo nuestras rutinas, sino también nuestros corazones, ayudándonos a reconectar con lo más importante: nuestros hijos.',
+      imagen: '/reproductoryfrases/Yenisel.webp'
+    },
+    {
       nombre:'Lily Alexa',
       description: 'La amistad duplica las alegrías y divide las angustias.',
       imagen: '/reproductoryfrases/Lilyy.webp'
@@ -100,6 +110,11 @@ export class BannerComponent implements OnInit {
       imagen: '/reproductoryfrases/Ilia.webp'
     },
     {
+      nombre:'Alieny',
+      description: 'Nunca eres demasiado viejo para establecer un nuevo objetivo o para soñar un nuevo sueño.',
+      imagen: '/reproductoryfrases/Alieny.webp'
+    },
+    {
       nombre: 'Israel',
       description: 'Tengo una amiga que aunque se fue a vivir lejos... siempre tendrá un espacio en mi corazón.',
       imagen: '/reproductoryfrases/Israel.webp'
@@ -150,6 +165,11 @@ export class BannerComponent implements OnInit {
       imagen: '/distancia/Valeria.webp'
     },
     {
+      nombre:'Yenisel',
+      description: 'Tu pasión por ayudarnos a liberar el estrés y fortalecer el vínculo con nuestros hijos ha sido un regalo invaluable. Eres una inspiración y un faro de esperanza para todas nosotras.',
+      imagen: '/reproductoryfrases/Yenisel.webp'
+    },
+    {
       nombre:'Iza',
       description: `Hay personas que brillan con luz propia
                     Hay personas que atraen a otras
@@ -166,6 +186,11 @@ export class BannerComponent implements OnInit {
       nombre:'Say',
       description: '💖Jamás dudes de la gran madre que eres fíjate si eres increíble que tienes muchas hij@s en una comunidad.',
       imagen: '/reproductoryfrases/Sai.webp'
+    },
+    {
+      nombre:'Alieny',
+      description: 'Tú sonrisa es contagiosa y tú corazón es aún más hermoso.',
+      imagen: '/reproductoryfrases/Alieny.webp'
     },
     {
       nombre:'Muñe',
@@ -210,6 +235,11 @@ export class BannerComponent implements OnInit {
       imagen: '/reproductoryfrases/Ilia.webp'
     },
     {
+      nombre:'Alieny',
+      description: 'La vida es como el jazz, es mucho mejor si es improvisada.',
+      imagen: '/reproductoryfrases/Alieny.webp'
+    },
+    {
       nombre: 'Israel',
       description: 'Te deseo lo mejor para tu futuro, que encuentres lo que estás buscando y que seas feliz. No olvides que aquí siempre vas a tener un amigo.',
       imagen: '/reproductoryfrases/Israel.webp'
@@ -249,6 +279,11 @@ export class BannerComponent implements OnInit {
       nombre: 'Lily',
       description: '"La distancia no puede borrar el impacto positivo que tienes en mi vida. ¡Eres mi persona vitamina!"',
       imagen: '/reproductoryfrases/Lily.webp'
+    },
+    {
+      nombre:'Alieny',
+      description: 'Gracias por hacer que lo ordinario se vuelva extraordinario cada vez que coincidimos en fenix.',
+      imagen: '/reproductoryfrases/Alieny.webp'
     },
     {
       nombre:'Muñe',
@@ -296,6 +331,11 @@ export class BannerComponent implements OnInit {
       nombre:'Say',
       description: '💖Conmigo siempre podrás contar, aún en tus días más oscuros que sientas que todo vale ingaaa.',
       imagen: '/reproductoryfrases/Sai.webp'
+    },
+    {
+      nombre:'Alieny',
+      description: 'Eres como el trébol de cuatro hojas, difícil de encontrar pero una gran suerte tenerte.',
+      imagen: '/reproductoryfrases/Alieny.webp'
     },
     {
       nombre:'Ilia',

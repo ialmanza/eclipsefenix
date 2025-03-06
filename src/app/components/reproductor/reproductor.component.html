@@ -56,6 +56,15 @@
       </div>
     </div>
 
+    <!-- Mostrar imagen por defecto cuando no hay canción seleccionada -->
+    <div class="current-track-info default-track" *ngIf="!cancionActual">
+      <img src="ruleta.webp" alt="Selecciona una canción" class="current-track-image">
+      <div class="track-details">
+        <h1>Selecciona una canción</h1>
+        <p>Elige una canción de la lista</p>
+      </div>
+    </div>
+
     <div class="tracks-list">
       <div class="track-item" *ngFor="let cancion of canciones; let i = index"
            (click)="seleccionarCancion(cancion)"

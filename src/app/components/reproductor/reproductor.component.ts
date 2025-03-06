@@ -286,11 +286,19 @@ export class ReproductorComponent implements OnInit {
     },
     {
       id: 31,
-      titulo: "Coldplay - Greatest Hits Song Full Album",
+      titulo: "Coldplay y Ed Sheeran - Fix You",
       artista: "Einy",
-      duracion: "55:20",
-      archivo: "/musica/Coldplay Greatest Hits Song Full Album - Coldplay Best Music Playlist(MP3_128K).mp3",
+      duracion: "5:07",
+      archivo: "/musica/Coldplay _ Ed Sheeran - Fix You (Live at Shepherd_s Bush Empire)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Einy.webp"
+    },
+    {
+      id: 32,
+      titulo: "Pablo Alborán - Gracias",
+      artista: "Yenisel",
+      duracion: "4:23",
+      archivo: "/musica/Pablo Alborán - Gracias (Audio oficial)(MP3_128K).mp3",
+      imagen: "/reproductoryfrases/Yenisel.webp"
     },
     // Añade más canciones según necesites
   ];
