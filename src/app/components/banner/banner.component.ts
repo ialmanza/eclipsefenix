@@ -97,7 +97,7 @@ export class BannerComponent implements OnInit {
     {
       nombre: 'Claudia',
       description: 'Una amistad no crece por la presencia de las personas sino por la magia de saber que aunque no las ves las llevas siempre en el corazón.',
-      imagen: '/reproductoryfrases/Israel.webp'
+      imagen: '/reproductoryfrases/Claudia.webp'
     },
     {
       nombre:'Yude',
@@ -147,7 +147,7 @@ export class BannerComponent implements OnInit {
     {
       nombre: 'Claudia',
       description: 'Se q lo vas a lograr,porque te esfuerzas un montón,vales mucho,eres mucho y brillas mucho.',
-      imagen: '/reproductoryfrases/Israel.webp'
+      imagen: '/reproductoryfrases/Claudia.webp'
     },
     {
       nombre:'Ilia',

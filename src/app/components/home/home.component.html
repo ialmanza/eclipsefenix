@@ -29,14 +29,14 @@
         <button class="cta-button" (click)="irAPlaylist()">Explorar Playlist</button>
       </div>
       <div class="section-image right" [@fadeSlide]="'in'">
-        <img src="fotos/otras4.webp" alt="Playlist">
+        <img src="reproductor.webp" alt="Playlist">
       </div>
     </section>
 
     <!-- Segunda sección -->
     <section class="section-alternate reverse">
       <div class="section-image left" [@fadeSlide]="'in'">
-        <img src="fotos/otras4.webp" alt="Fotos">
+        <img src="galeria.webp" alt="Fotos">
       </div>
       <div class="section-content right" [@fadeSlide]="'in'">
         <h2>Fotos</h2>
@@ -46,35 +46,6 @@
     </section>
   </div>
 </div>
-
-<!-- Video Section -->
-<!-- <section class="video-section">
-  <div class="video-container">
-    <div class="video-wrapper">
-
-      <div class="thumbnail" [class.hidden]="isPlaying" (click)="isPlaying = true">
-        <img src="ruleta.webp" alt="Video thumbnail">
-        <div class="play-button">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-        </div>
-      </div>
-
-      <iframe
-        *ngIf="isPlaying"
-        class="youtube-video"
-        src="https://www.youtube.com/embed/tK3Wu0TrsNM?autoplay=1&rel=0&modestbranding=1"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="video-text">
-      <h2>Nuestro Viaje</h2>
-    </div>
-  </div>
-</section> -->
 
 <section class="video-section" #videoSection>
   <div class="video-container">

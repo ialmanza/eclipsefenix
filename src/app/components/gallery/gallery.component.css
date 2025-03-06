@@ -386,3 +386,64 @@
     margin-right: 15px;
   }
 }
+
+
+/* Añade estos estilos a tu archivo CSS */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1002;
+}
+
+.nav-button:hover {
+  background-color: var(--color-green-medium);
+  color: white;
+}
+
+.prev-button {
+  left: -25px;
+}
+
+.next-button {
+  right: -25px;
+}
+
+@media (max-width: 768px) {
+  .nav-button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .prev-button {
+    left: -15px;
+  }
+
+  .next-button {
+    right: -15px;
+  }
+}
+
+/* Mejora del contenido del lightbox para soportar la navegación */
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

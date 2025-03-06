@@ -25,7 +25,7 @@
               class="gallery-item"
               [ngClass]="{ 'video-item': item.type === 'video' }"
             >
-              <div class="item-container" (click)="openLightbox(item)">
+              <div class="item-container" (click)="openLightbox(item, section.items)">
                 <img [src]="item.thumbnail" [alt]="item.caption" loading="lazy" />
                 <div class="item-overlay">
                   <span class="item-caption">{{ item.caption }}</span>
@@ -41,7 +41,7 @@
         <div class="carousel-container" *ngIf="isCarouselSection(section.title)">
           <div class="carousel" #carousel>
             <div *ngFor="let item of section.items" class="carousel-item">
-              <div class="item-container" (click)="openLightbox(item)">
+              <div class="item-container" (click)="openLightbox(item, section.items)">
                 <img [src]="item.thumbnail" [alt]="item.caption" loading="lazy" />
                 <div class="item-overlay">
                   <span class="item-caption">{{ item.caption }}</span>
@@ -65,7 +65,7 @@
               class="gallery-item"
               [ngClass]="{ 'video-item': item.type === 'video' }"
             >
-              <div class="item-container" (click)="openLightbox(item)">
+              <div class="item-container" (click)="openLightbox(item, section.items)">
                 <img [src]="item.thumbnail" [alt]="item.caption" loading="lazy" />
                 <div class="item-overlay">
                   <span class="item-caption">{{ item.caption }}</span>
@@ -78,7 +78,7 @@
       </section>
     </main>
 
-    <div
+    <!-- <div
       class="lightbox"
       *ngIf="(lightboxService.lightboxState$ | async)?.isOpen"
     >
@@ -105,8 +105,53 @@
           <p class="lightbox-caption">{{ item.caption }}</p>
         </ng-container>
       </div>
-    </div>
+    </div> -->
 
+    <div
+      class="lightbox"
+      *ngIf="(lightboxService.lightboxState$ | async)?.isOpen"
+    >
+      <div class="lightbox-overlay" (click)="lightboxService.close()"></div>
+      <div class="lightbox-content">
+        <button class="close-button" (click)="lightboxService.close()">×</button>
+
+        <ng-container
+          *ngIf="(lightboxService.lightboxState$ | async)?.currentItem as item"
+        >
+          <button
+            *ngIf="(lightboxService.lightboxState$ | async)?.allItems!.length > 1"
+            class="nav-button prev-button"
+            (click)="lightboxService.previous()"
+          >
+            &lt;
+          </button>
+
+          <video
+            *ngIf="item.type === 'video'"
+            [src]="item.url"
+            controls
+            autoplay
+            class="lightbox-media"
+          ></video>
+          <img
+            *ngIf="item.type === 'image'"
+            [src]="item.url"
+            [alt]="item.caption"
+            class="lightbox-media"
+          />
+
+          <button
+            *ngIf="(lightboxService.lightboxState$ | async)?.allItems!.length > 1"
+            class="nav-button next-button"
+            (click)="lightboxService.next()"
+          >
+            &gt;
+          </button>
+
+          <p class="lightbox-caption">{{ item.caption }}</p>
+        </ng-container>
+      </div>
+    </div>
   </div>
   <br>
 </div>

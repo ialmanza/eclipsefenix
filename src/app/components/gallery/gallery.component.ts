@@ -411,8 +411,12 @@ export class GalleryComponent {
     });
   }
 
-  openLightbox(item: GalleryItem): void {
-    this.lightboxService.open(item);
+  // openLightbox(item: GalleryItem): void {
+  //   this.lightboxService.open(item);
+  // }
+
+  openLightbox(item: GalleryItem, sectionItems: GalleryItem[]): void {
+    this.lightboxService.open(item, sectionItems);
   }
 
   // Método para validar URLs de videos
