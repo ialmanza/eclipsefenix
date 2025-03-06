@@ -36,8 +36,18 @@ export class BannerComponent implements OnInit {
   frases: Frase[] = [
     {
       nombre: 'Israel',
-      description: 'Una amistad no crece por la presencia de las personas sino por la magia de saber que aunque no las ves las llevas siempre en el corazón.',
+      description: 'Siéntete orgulloso del hermoso ser humano q eres,nadie sabe todo lo q has atravesado para mantener esa sonrisa,recuerda:las crisis siempre ayudan a crecer.',
       imagen: '/reproductoryfrases/Israel.webp'
+    },
+    {
+      nombre:'Lily Alexa',
+      description: 'La amistad duplica las alegrías y divide las angustias.',
+      imagen: '/reproductoryfrases/Lilyy.webp'
+    },
+    {
+      nombre: 'Claudia',
+      description: 'Esta semana enfocarte en ti,en progresar, en ser mejor cada día por tus propósitos, por nadie más y veras como suceden las cosas.',
+      imagen: '/reproductoryfrases/Claudia.webp'
     },
     {
       nombre:'Say',
@@ -73,6 +83,11 @@ export class BannerComponent implements OnInit {
       nombre:'Say',
       description: '💖Eres la artista de tu propio destino, no dejes nunca que nadie tome el pincel y pinte tu futuro',
       imagen: '/reproductoryfrases/Sai.webp'
+    },
+    {
+      nombre: 'Claudia',
+      description: 'Una amistad no crece por la presencia de las personas sino por la magia de saber que aunque no las ves las llevas siempre en el corazón.',
+      imagen: '/reproductoryfrases/Israel.webp'
     },
     {
       nombre:'Yude',
@@ -113,6 +128,11 @@ export class BannerComponent implements OnInit {
       nombre:'Say',
       description: '💖Las mejores cosas están por venir sigue creyendo en ti,amiga porque aún sea a la distancia yo estaré en primera fila para ver alcanzar tus metas y sueños anhelados.',
       imagen: '/reproductoryfrases/Sai.webp'
+    },
+    {
+      nombre: 'Claudia',
+      description: 'Se q lo vas a lograr,porque te esfuerzas un montón,vales mucho,eres mucho y brillas mucho.',
+      imagen: '/reproductoryfrases/Israel.webp'
     },
     {
       nombre:'Ilia',
@@ -312,6 +332,7 @@ export class BannerComponent implements OnInit {
       description: 'Tengo una amiga que emite la misma energía que el verano durante todo el año.',
       imagen: '/reproductoryfrases/Ilia.webp'
     },
+
   ];
 
 

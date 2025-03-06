@@ -4,6 +4,7 @@ import { ReproductorComponent } from './components/reproductor/reproductor.compo
 import { BannerComponent } from './components/banner/banner.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { PlayerDetailComponent } from './components/player-detail/player-detail.component';
 
 export const routes: Routes = [
   {path: '',component: HomeComponent},
@@ -11,4 +12,5 @@ export const routes: Routes = [
   {path: 'banner',component: BannerComponent},
   {path: 'footer',component: FooterComponent},
   {path: 'gallery',component: GalleryComponent},
+  {path: 'player-detail',component: PlayerDetailComponent},
 ];

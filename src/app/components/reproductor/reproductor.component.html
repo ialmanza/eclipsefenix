@@ -1,5 +1,26 @@
 <div>
   <div class="player-container">
+
+    <!-- Vista de detalle -->
+  <div *ngIf="mostrarDetalle" class="detail-view-container">
+    <app-player-detail
+      [cancionActual]="cancionActual"
+      [reproduciendo]="reproduciendo"
+      [progresoActual]="progresoActual"
+      [tiempoActual]="tiempoActual"
+      [esShuffleActivado]="isShuffleOn"
+      [esRepeatActivado]="isRepeatOn"
+      (volverALista)="volverALista()"
+      (togglePlay)="toggleReproduccion()"
+      (siguienteCancion)="siguiente()"
+      (anteriorCancion)="anterior()"
+      (actualizarProgreso)="actualizarProgreso($event)"
+      (toggleLike)="toggleFavorito()"
+      (toggleShuffle)="toggleShuffle()"
+      (toggleRepeat)="toggleRepeat()">
+    </app-player-detail>
+  </div>
+
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="sidebar-header">
@@ -19,13 +40,13 @@
 
   <!-- Main Content -->
   <div class="main-content">
-    <div class="now-playing-header">
+    <!-- <div class="now-playing-header">
       <div class="header-controls">
         <button class="header-button">
           <fa-icon [icon]="iconoCorazon"></fa-icon>
         </button>
       </div>
-    </div>
+    </div> -->
 
     <div class="current-track-info" *ngIf="cancionActual">
       <img [src]="cancionActual.imagen" [alt]="cancionActual.titulo" class="current-track-image">
@@ -51,7 +72,7 @@
   </div>
 
   <!-- Player Bar -->
-  <div class="player-bar">
+  <div class="player-bar" *ngIf="!mostrarDetalle">
     <div class="now-playing-bar">
       <div class="now-playing-left">
         <img [src]="cancionActual?.imagen || 'ruleta.webp'" [alt]="cancionActual?.titulo" class="mini-track-image">

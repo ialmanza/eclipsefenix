@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ElementRef  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -13,6 +13,7 @@ import {
   faHeart,
   faListUl
 } from '@fortawesome/free-solid-svg-icons';
+import { PlayerDetailComponent } from "../player-detail/player-detail.component";
 
 interface Cancion {
   id: number;
@@ -25,9 +26,9 @@ interface Cancion {
 
 @Component({
   selector: 'app-reproductor',
-  imports: [ CommonModule, FontAwesomeModule ],
+  imports: [CommonModule, FontAwesomeModule, PlayerDetailComponent],
   templateUrl: './reproductor.component.html',
-  styleUrl: './reproductor.component.css'
+  styleUrls: ['./reproductor.component.scss']
 })
 export class ReproductorComponent implements OnInit {
   // Iconos
@@ -41,8 +42,6 @@ export class ReproductorComponent implements OnInit {
   iconoRepetir = faRepeat;
   iconoCorazon = faHeart;
   iconoLista = faListUl;
-
-
 
   canciones: Cancion[] = [
     {
@@ -308,8 +307,10 @@ export class ReproductorComponent implements OnInit {
   isRepeatOn: boolean = false;
   cancionesShuffled: Cancion[] = [];
   sidebarOpen: boolean = false;
+  mostrarDetalle: boolean = false;
+  cancionesFavoritas: number[] = [];
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}
 
   ngOnInit() {
     this.audioElement = new Audio();
@@ -336,6 +337,7 @@ export class ReproductorComponent implements OnInit {
       this.audioElement.play();
       this.reproduciendo = true;
     }
+    this.mostrarDetalle = true;
     this.cdr.detectChanges();
   }
 
@@ -489,4 +491,44 @@ export class ReproductorComponent implements OnInit {
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
+
+   // Funciones para gestionar la vista detallada
+   volverALista() {
+    this.mostrarDetalle = false;
+  }
+
+  abrirDetalle() {
+    if (this.cancionActual) {
+      this.mostrarDetalle = true;
+    }
+  }
+
+  // Funciones para favoritos
+  toggleFavorito() {
+    if (!this.cancionActual) return;
+
+    const index = this.cancionesFavoritas.indexOf(this.cancionActual.id);
+    if (index === -1) {
+      // Añadir a favoritos
+      this.cancionesFavoritas.push(this.cancionActual.id);
+    } else {
+      // Quitar de favoritos
+      this.cancionesFavoritas.splice(index, 1);
+    }
+  }
+
+  esFavorito(id: number): boolean {
+    return this.cancionesFavoritas.includes(id);
+  }
+
+  // En el componente principal
+toggleDetalle() {
+  this.mostrarDetalle = !this.mostrarDetalle;
+  // Añadir/quitar clase al host element
+  if (this.mostrarDetalle) {
+    this.elementRef.nativeElement.classList.add('detail-mode');
+  } else {
+    this.elementRef.nativeElement.classList.remove('detail-mode');
+  }
+}
 }

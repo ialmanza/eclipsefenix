@@ -1,0 +1,56 @@
+<div class="player-detail-container">
+  <!-- Header -->
+  <div class="player-header">
+    <button class="back-button" (click)="volver()">
+      <fa-icon [icon]="iconoVolver"></fa-icon>
+    </button>
+    <div class="header-title">Reproduciendo Ahora</div>
+    <button class="options-button">
+      <fa-icon [icon]="iconoOpciones"></fa-icon>
+    </button>
+  </div>
+
+  <!-- Album Art -->
+  <div class="album-artwork-container">
+    <img [src]="cancionActual?.imagen" [alt]="cancionActual?.titulo" class="album-artwork">
+  </div>
+
+  <!-- Track Info -->
+  <div class="track-info-container">
+    <div class="track-info">
+      <h1 class="track-title">{{cancionActual?.titulo || 'Selecciona una canción'}}</h1>
+      <p class="track-artist">{{cancionActual?.artista || 'Artista'}}</p>
+    </div>
+    <button class="like-button" [class.liked]="esFavorito" (click)="onToggleLike()">
+      <fa-icon [icon]="iconoCorazon"></fa-icon>
+    </button>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <input type="range" class="progress-slider" [value]="progresoActual" (input)="actualizarProgreso.emit($event)">
+    <div class="time-labels">
+      <span class="time-current">{{tiempoActual}}</span>
+      <span class="time-total">{{cancionActual?.duracion || '0:00'}}</span>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls-container">
+    <button class="control-button shuffle" [class.active]="esShuffleActivado" (click)="toggleShuffle.emit()">
+      <fa-icon [icon]="iconoSiguiente" [flip]="'horizontal'"></fa-icon>
+    </button>
+    <button class="control-button skip-prev" (click)="anteriorCancion.emit()">
+      <fa-icon [icon]="iconoAnterior"></fa-icon>
+    </button>
+    <button class="play-button" (click)="togglePlay.emit()">
+      <fa-icon [icon]="reproduciendo ? iconoPausa : iconoPlay"></fa-icon>
+    </button>
+    <button class="control-button skip-next" (click)="siguienteCancion.emit()">
+      <fa-icon [icon]="iconoSiguiente"></fa-icon>
+    </button>
+    <button class="control-button repeat" [class.active]="esRepeatActivado" (click)="toggleRepeat.emit()">
+      <fa-icon [icon]="iconoSiguiente"></fa-icon>
+    </button>
+  </div>
+</div>
