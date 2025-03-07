@@ -118,6 +118,12 @@ export class GalleryComponent {
           thumbnail: 'encuentros/enerobskids2025.webp',
           caption: 'Enero Bendis 2025'
         },
+        {
+          type: 'image',
+          url: 'encuentros/febrero2025.webp',
+          thumbnail: 'encuentros/febrero2025.webp',
+          caption: 'Febrero 2025'
+        }
 
       ]
     },

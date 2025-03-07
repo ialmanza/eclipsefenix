@@ -31,17 +31,20 @@
 }
 
 .player-detail-container {
-  height: 100%;
+  height: 100vh; /* Cambiado a 100vh para asegurar que ocupe todo el alto disponible */
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  overflow: hidden; /* Evita scroll inesperado */
+  box-sizing: border-box; /* Asegura que padding no añada tamaño */
 }
 
 .player-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  min-height: 40px; /* Altura mínima fija */
 
   .back-button, .options-button {
     background: transparent;
@@ -70,20 +73,21 @@
 }
 
 .album-artwork-container {
-  flex: 1;
+  flex: 0 1 auto; /* Cambio importante: permite que se contraiga si es necesario */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  max-height: 35vh; /* Limitamos altura máxima proporcional a la pantalla */
 
   .album-artwork {
-    width: 100%;
-    max-width: 350px;
-    max-height: 350px;
-    height: auto;
+    width: auto; /* Ancho automático basado en altura */
+    max-width: 90%; /* Limita ancho al 90% del contenedor */
+    max-height: 100%; /* Altura máxima del contenedor */
+    height: auto; /* Altura proporcional al ancho */
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-elevation);
-    object-fit: cover;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin deformar */
   }
 }
 
@@ -91,25 +95,31 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
+  min-height: 60px; /* Altura mínima fija */
+  max-height: 15vh; /* Altura máxima proporcional */
 
-  .track-info .track-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem 0;
-    overflow: hidden;
-    word-wrap: break-word;
-    word-break: break-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    box-orient: vertical;
+  .track-info {
+    flex: 1;
+    min-width: 0; /* Permite que el texto se contraiga correctamente */
+
+    .track-title {
+      font-size: 1.25rem; /* Reducido de 1.5rem */
+      font-weight: 700;
+      margin: 0 0 0.25rem 0;
+      overflow: hidden;
+      // text-overflow: ellipsis; /* Mostrar elipsis para texto cortado */
+      //white-space: nowrap; /* Evita saltos de línea en dispositivos pequeños */
+      max-width: 85%; /* Deja espacio para el botón de like */
+    }
 
     .track-artist {
-      font-size: 1rem;
+      font-size: 0.9rem; /* Reducido de 1rem */
       color: var(--spotify-light-grey);
       margin: 0;
+      overflow: hidden;
+      //text-overflow: ellipsis;
+      //white-space: nowrap;
     }
   }
 
@@ -121,6 +131,7 @@
     cursor: pointer;
     padding: 0.5rem;
     transition: color var(--transition-speed);
+    flex-shrink: 0; /* Evita que se reduzca el botón */
 
     &.liked {
       color: var(--spotify-green);
@@ -129,7 +140,8 @@
 }
 
 .progress-container {
-  margin: 1rem 1rem;
+  margin: 0.5rem 0;
+  min-height: 30px; /* Altura mínima fija */
 
   .progress-slider {
     width: 100%;
@@ -173,7 +185,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem 0;
+  margin: 1rem 0;
+  min-height: 64px; /* Altura mínima basada en el botón de reproducción */
+  margin-top: auto; /* Empuja los controles hacia abajo */
 
   .control-button {
     background: transparent;
@@ -187,6 +201,7 @@
     align-items: center;
     justify-content: center;
     transition: opacity var(--transition-speed);
+    flex-shrink: 0; /* Evita que se reduzca */
 
     &:hover {
       opacity: 0.8;
@@ -202,14 +217,15 @@
     color: var(--spotify-black);
     border: none;
     border-radius: 50%;
-    width: 64px;
-    height: 64px;
+    width: 60px; /* Ligeramente reducido de 64px */
+    height: 60px; /* Ligeramente reducido de 64px */
     font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: transform var(--transition-speed);
+    flex-shrink: 0; /* Evita que se reduzca */
 
     &:hover {
       transform: scale(1.05);
@@ -221,28 +237,118 @@
   }
 }
 
-// Media queries for responsiveness
+// Media queries para responsividad
 @media (max-height: 700px) {
-  .album-artwork-container .album-artwork {
-    max-width: 250px;
-    max-height: 250px;
+  .player-detail-container {
+    padding: 0.75rem;
+  }
+
+  .album-artwork-container {
+    max-height: 30vh;
+  }
+
+  .track-info-container {
+    max-height: 12vh;
   }
 }
 
 @media (max-height: 600px) {
-  .album-artwork-container {
-    padding: 0.5rem 0;
+  .player-detail-container {
+    padding: 0.5rem;
   }
 
-  .album-artwork-container .album-artwork{
-    max-width: 200px;
-    max-height: 200px;
+  .album-artwork-container {
+    max-height: 25vh;
+    padding: 0.25rem 0;
   }
 
   .controls-container {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
   }
 
+  .play-button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
 }
 
+@media (max-height: 480px) {
+  .player-detail-container {
+    padding: 0.25rem;
+    flex-direction: row; /* Cambia a horizontal en pantallas muy pequeñas */
+    flex-wrap: wrap; /* Permite saltos de línea */
+    align-items: center;
+    justify-content: space-between;
+  }
 
+  .player-header {
+    width: 100%; /* Ocupa todo el ancho */
+    order: 1; /* Orden en el contenedor */
+    padding: 0.25rem 0;
+  }
+
+  .album-artwork-container {
+    width: 25%; /* Ocupa 25% del ancho */
+    order: 2;
+    max-height: none;
+    padding: 0.25rem;
+
+    .album-artwork {
+      max-height: 80px;
+    }
+  }
+
+  .track-info-container {
+    width: 70%; /* Ocupa 70% del ancho */
+    order: 3;
+    margin: 0;
+
+    .track-info .track-title {
+      font-size: 1rem;
+    }
+
+    .track-artist {
+      font-size: 0.8rem;
+    }
+  }
+
+  .progress-container {
+    width: 100%; /* Ocupa todo el ancho */
+    order: 4;
+    margin: 0.25rem 0;
+    margin-top: auto;
+  }
+
+  .controls-container {
+    width: 100%; /* Ocupa todo el ancho */
+    order: 5;
+    margin: 0.25rem 0;
+
+    .control-button {
+      width: 30px;
+      height: 30px;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .controls-container {
+    .control-button {
+      width: 25px;
+      height: 25px;
+      font-size: 0.8rem;
+    }
+
+    .play-button {
+      width: 45px;
+      height: 45px;
+      font-size: 1rem;
+    }
+  }
+
+  .track-info-container .track-info .track-title {
+    font-size: 0.9rem;
+  }
+}
