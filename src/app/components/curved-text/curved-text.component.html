@@ -1,0 +1,32 @@
+<div class="home-container">
+  <div class="fenix-wrapper">
+    <svg class="curved-text" viewBox="0 0 500 500">
+      <defs>
+        <!-- Path circular completo -->
+        <path id="curvePath"
+              d="M 250,50
+                 A 200,200 0 1,1 249.99,50"
+              fill="none" />
+
+        <!-- Máscara mejorada para mostrar solo texto en la parte superior -->
+        <clipPath id="topHalfClip">
+          <!-- Rectángulo que solo muestra la mitad superior -->
+          <rect x="0" y="0" width="500" height="250" />
+        </clipPath>
+      </defs>
+
+      <!-- Contenedor del texto con clipPath aplicado -->
+      <g clip-path="url(#topHalfClip)">
+        <text class="rotating-text">
+          <textPath xlink:href="#curvePath" startOffset="0%">
+            FÉNIX FÉNIX FÉNIX FÉNIX FÉNIX FÉNIX FÉNIX FÉNIX FÉNIX FÉNIX FÉNIX FÉNIX
+          </textPath>
+        </text>
+      </g>
+    </svg>
+
+    <div class="logo-container">
+      <img src="ruleta.webp" alt="Logo Fénix" class="logo" />
+    </div>
+  </div>
+</div>

@@ -4,10 +4,11 @@ import { FooterComponent } from "../footer/footer.component";
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { CurvedTextComponent } from "../curved-text/curved-text.component";
 
 @Component({
   selector: 'app-home',
-  imports: [BannerComponent, FooterComponent, CommonModule],
+  imports: [BannerComponent, FooterComponent, CommonModule, CurvedTextComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   animations: [

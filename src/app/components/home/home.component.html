@@ -1,23 +1,5 @@
 
-<!-- HTML -->
-<div class="home-container">
-  <svg class="curved-text" viewBox="0 0 500 500">
-    <defs>
-      <path id="curvePath"
-            d="M 250,50
-               A 200,200 0 1,1 249.99,50"
-            fill="none" />
-    </defs>
-    <text>
-      <textPath xlink:href="#curvePath" startOffset="50%" text-anchor="middle">
-        FÉNIX FÉNIX FÉNIX FÉNI FÉNIX FÉNIX &nbsp;
-      </textPath>
-    </text>
-  </svg>
-  <div class="logo-container">
-    <img src="ruleta.webp" alt="Logo Fénix" class="logo" />
-  </div>
-</div>
+<app-curved-text></app-curved-text>
 
 <div class="sections">
   <div class="sections-container">
@@ -52,7 +34,7 @@
     <div class="video-wrapper">
       <!-- Thumbnail y video -->
       <div class="thumbnail" [class.hidden]="isPlaying" (click)="startPlaying()">
-        <img src="ruleta.webp" alt="Video thumbnail">
+        <img src="video.webp" alt="Video thumbnail">
         <div class="play-button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5v14l11-7z"/>

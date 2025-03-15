@@ -1,0 +1,122 @@
+:host {
+  --color-green-dark: #2D5A27;
+  --color-green-medium: #4A8E3B;
+  --color-green-light: #7AB56B;
+  --color-green-pale: #A8D5A0;
+  --color-green-bg: #F0F7EF;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  background: linear-gradient(to bottom, #c5f7bf, #529d41);
+}
+
+.fenix-wrapper {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.curved-text {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none; /* Evita que el SVG interfiera con interacciones del logo */
+}
+
+.rotating-text {
+  font-size: 42px;
+  font-weight: bold;
+  fill: #333;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  animation: rotateTextInfinite 30s linear infinite;
+}
+
+@keyframes rotateTextInfinite {
+  from {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  to {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+
+.logo-container {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #333;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .fenix-wrapper {
+    width: 400px;
+    height: 400px;
+  }
+
+  .curved-text {
+    width: 400px;
+    height: 400px;
+  }
+
+  .rotating-text {
+    font-size: 34px;
+  }
+
+  .logo-container {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fenix-wrapper {
+    width: 300px;
+    height: 300px;
+  }
+
+  .curved-text {
+    width: 300px;
+    height: 300px;
+  }
+
+  .rotating-text {
+    font-size: 26px;
+  }
+
+  .logo-container {
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -31,12 +31,12 @@
 }
 
 .player-detail-container {
-  height: 100vh; /* Cambiado a 100vh para asegurar que ocupe todo el alto disponible */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  overflow: hidden; /* Evita scroll inesperado */
-  box-sizing: border-box; /* Asegura que padding no añada tamaño */
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .player-header {
@@ -44,7 +44,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
-  min-height: 40px; /* Altura mínima fija */
+  min-height: 40px;
 
   .back-button, .options-button {
     background: transparent;
@@ -73,21 +73,21 @@
 }
 
 .album-artwork-container {
-  flex: 0 1 auto; /* Cambio importante: permite que se contraiga si es necesario */
+  flex: 0 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem 0;
-  max-height: 35vh; /* Limitamos altura máxima proporcional a la pantalla */
+  max-height: 35vh;
 
   .album-artwork {
-    width: auto; /* Ancho automático basado en altura */
-    max-width: 90%; /* Limita ancho al 90% del contenedor */
-    max-height: 100%; /* Altura máxima del contenedor */
-    height: auto; /* Altura proporcional al ancho */
+    width: auto;
+    max-width: 90%;
+    max-height: 100%;
+    height: auto;
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-elevation);
-    object-fit: contain; /* Asegura que la imagen se ajuste sin deformar */
+    object-fit: contain;
   }
 }
 
@@ -96,30 +96,26 @@
   justify-content: space-between;
   align-items: flex-start;
   margin: 0.5rem 0;
-  min-height: 60px; /* Altura mínima fija */
-  max-height: 15vh; /* Altura máxima proporcional */
+  min-height: 60px;
+  max-height: 15vh;
 
   .track-info {
     flex: 1;
-    min-width: 0; /* Permite que el texto se contraiga correctamente */
+    min-width: 0;
 
     .track-title {
-      font-size: 1.25rem; /* Reducido de 1.5rem */
+      font-size: 1.25rem;
       font-weight: 700;
       margin: 0 0 0.25rem 0;
       overflow: hidden;
-      // text-overflow: ellipsis; /* Mostrar elipsis para texto cortado */
-      //white-space: nowrap; /* Evita saltos de línea en dispositivos pequeños */
-      max-width: 85%; /* Deja espacio para el botón de like */
+      max-width: 85%;
     }
 
     .track-artist {
-      font-size: 0.9rem; /* Reducido de 1rem */
+      font-size: 0.9rem;
       color: var(--spotify-light-grey);
       margin: 0;
       overflow: hidden;
-      //text-overflow: ellipsis;
-      //white-space: nowrap;
     }
   }
 
@@ -131,7 +127,7 @@
     cursor: pointer;
     padding: 0.5rem;
     transition: color var(--transition-speed);
-    flex-shrink: 0; /* Evita que se reduzca el botón */
+    flex-shrink: 0;
 
     &.liked {
       color: var(--spotify-green);
@@ -141,7 +137,7 @@
 
 .progress-container {
   margin: 0.5rem 0;
-  min-height: 30px; /* Altura mínima fija */
+  min-height: 30px;
 
   .progress-slider {
     width: 100%;
@@ -186,8 +182,8 @@
   justify-content: space-between;
   align-items: center;
   margin: 1rem 0;
-  min-height: 64px; /* Altura mínima basada en el botón de reproducción */
-  margin-top: auto; /* Empuja los controles hacia abajo */
+  min-height: 64px;
+  margin-top: auto;
 
   .control-button {
     background: transparent;
@@ -201,7 +197,7 @@
     align-items: center;
     justify-content: center;
     transition: opacity var(--transition-speed);
-    flex-shrink: 0; /* Evita que se reduzca */
+    flex-shrink: 0;
 
     &:hover {
       opacity: 0.8;
@@ -217,15 +213,15 @@
     color: var(--spotify-black);
     border: none;
     border-radius: 50%;
-    width: 60px; /* Ligeramente reducido de 64px */
-    height: 60px; /* Ligeramente reducido de 64px */
+    width: 60px;
+    height: 60px;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: transform var(--transition-speed);
-    flex-shrink: 0; /* Evita que se reduzca */
+    flex-shrink: 0;
 
     &:hover {
       transform: scale(1.05);
@@ -276,20 +272,20 @@
 @media (max-height: 480px) {
   .player-detail-container {
     padding: 0.25rem;
-    flex-direction: row; /* Cambia a horizontal en pantallas muy pequeñas */
-    flex-wrap: wrap; /* Permite saltos de línea */
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
   }
 
   .player-header {
-    width: 100%; /* Ocupa todo el ancho */
-    order: 1; /* Orden en el contenedor */
+    width: 100%;
+    order: 1;
     padding: 0.25rem 0;
   }
 
   .album-artwork-container {
-    width: 25%; /* Ocupa 25% del ancho */
+    width: 25%;
     order: 2;
     max-height: none;
     padding: 0.25rem;
@@ -300,7 +296,7 @@
   }
 
   .track-info-container {
-    width: 70%; /* Ocupa 70% del ancho */
+    width: 70%;
     order: 3;
     margin: 0;
 
@@ -314,14 +310,14 @@
   }
 
   .progress-container {
-    width: 100%; /* Ocupa todo el ancho */
+    width: 100%;
     order: 4;
     margin: 0.25rem 0;
     margin-top: auto;
   }
 
   .controls-container {
-    width: 100%; /* Ocupa todo el ancho */
+    width: 100%;
     order: 5;
     margin: 0.25rem 0;
 
