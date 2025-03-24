@@ -8,7 +8,9 @@ import {
   faStepBackward,
   faHeart,
   faArrowLeft,
-  faEllipsisH
+  faEllipsisH,
+  faShuffle,
+  faRepeat
 } from '@fortawesome/free-solid-svg-icons';
 
 interface Cancion {
@@ -52,6 +54,8 @@ export class PlayerDetailComponent implements OnInit {
   iconoCorazon = faHeart;
   iconoVolver = faArrowLeft;
   iconoOpciones = faEllipsisH;
+  iconoShuffle = faShuffle;
+  iconoRepetir = faRepeat;
 
   esFavorito: boolean = false;
 

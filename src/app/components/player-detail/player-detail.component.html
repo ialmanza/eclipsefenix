@@ -38,7 +38,7 @@
   <!-- Controls -->
   <div class="controls-container">
     <button class="control-button shuffle" [class.active]="esShuffleActivado" (click)="toggleShuffle.emit()">
-      <fa-icon [icon]="iconoSiguiente" [flip]="'horizontal'"></fa-icon>
+      <fa-icon [icon]="iconoShuffle" [flip]="'horizontal'"></fa-icon>
     </button>
     <button class="control-button skip-prev" (click)="anteriorCancion.emit()">
       <fa-icon [icon]="iconoAnterior"></fa-icon>
@@ -50,7 +50,7 @@
       <fa-icon [icon]="iconoSiguiente"></fa-icon>
     </button>
     <button class="control-button repeat" [class.active]="esRepeatActivado" (click)="toggleRepeat.emit()">
-      <fa-icon [icon]="iconoSiguiente"></fa-icon>
+      <fa-icon [icon]="iconoRepetir"></fa-icon>
     </button>
   </div>
   <br>
