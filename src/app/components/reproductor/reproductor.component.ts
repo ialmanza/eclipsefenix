@@ -349,6 +349,7 @@ export class ReproductorComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+
   toggleReproduccion() {
     if (!this.cancionActual && this.canciones.length > 0) {
       this.seleccionarCancion(this.canciones[0]);

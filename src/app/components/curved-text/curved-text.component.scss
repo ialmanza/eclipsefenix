@@ -1,127 +1,3 @@
-// :host {
-//   --color-green-dark: #2D5A27;
-//   --color-green-medium: #4A8E3B;
-//   --color-green-light: #7AB56B;
-//   --color-green-pale: #A8D5A0;
-//   --color-green-bg: #F0F7EF;
-// }
-
-// .home-container {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   min-height: 100vh;
-//   padding: 2rem;
-//   position: relative;
-//   background: linear-gradient(to bottom, #c5f7bf, #529d41);
-// }
-
-// .fenix-wrapper {
-//   position: relative;
-//   width: 500px;
-//   height: 500px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-// .curved-text {
-//   position: absolute;
-//   width: 500px;
-//   height: 500px;
-//   top: 0;
-//   left: 0;
-//   z-index: 2;
-//   pointer-events: none;
-// }
-
-// .rotating-text {
-//   font-size: 42px;
-//   font-weight: bold;
-//   fill: #333;
-//   text-transform: uppercase;
-//   letter-spacing: 4px;
-//   animation: rotateTextInfinite 30s linear infinite;
-// }
-
-// @keyframes rotateTextInfinite {
-//   from {
-//     transform: rotate(0deg);
-//     transform-origin: center;
-//   }
-//   to {
-//     transform: rotate(360deg);
-//     transform-origin: center;
-//   }
-// }
-
-// .logo-container {
-//   width: 320px;
-//   height: 320px;
-//   border-radius: 50%;
-//   overflow: hidden;
-//   border: 3px solid #333;
-//   background-color: #fff;
-//   position: relative;
-//   z-index: 1;
-// }
-
-// .logo {
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-//   transition: transform 0.3s ease;
-
-//   &:hover {
-//     transform: scale(1.1);
-//   }
-// }
-
-// @media (max-width: 768px) {
-//   .fenix-wrapper {
-//     width: 400px;
-//     height: 400px;
-//   }
-
-//   .curved-text {
-//     width: 400px;
-//     height: 400px;
-//   }
-
-//   .rotating-text {
-//     font-size: 34px;
-//   }
-
-//   .logo-container {
-//     width: 250px;
-//     height: 250px;
-//   }
-// }
-
-// @media (max-width: 480px) {
-//   .fenix-wrapper {
-//     width: 300px;
-//     height: 300px;
-//   }
-
-//   .curved-text {
-//     width: 300px;
-//     height: 300px;
-//   }
-
-//   .rotating-text {
-//     font-size: 26px;
-//   }
-
-//   .logo-container {
-//     width: 200px;
-//     height: 200px;
-//   }
-// }
-
-
-
 :host {
   --color-green-dark: #1E5128;
   --color-green-medium: #4E9F3D;
@@ -141,16 +17,23 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
   padding: 2rem;
+  margin: 0;
   position: relative;
   background: radial-gradient(circle at center, var(--color-green-pale), var(--color-green-light), var(--color-green-medium));
   font-family: var(--font-primary);
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .fenix-wrapper {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  aspect-ratio: 1/1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,8 +42,8 @@
 
 .curved-text {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: 2;
@@ -168,14 +51,12 @@
   filter: drop-shadow(0 0 5px rgba(255, 119, 0, 0.6));
 }
 
-
 .rotating-text {
-  font-size: 50px;
+  font-size: clamp(16px, 5vw, 50px);
   font-weight: bold;
-  // fill: url(#textGradient);
   fill: #333;
   text-transform: uppercase;
-  letter-spacing: 8px;
+  letter-spacing: 0.8vw;
   animation: rotateTextInfinite 30s linear infinite;
   font-family: var(--font-primary);
   filter: url(#glow);
@@ -229,8 +110,9 @@
 }
 
 .logo-container {
-  width: 320px;
-  height: 320px;
+  width: 65%;
+  height: auto;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: visible;
   position: relative;
@@ -315,11 +197,13 @@
   border-radius: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transform: translateZ(0);
+  width: auto;
+  max-width: 100%;
 }
 
 .tagline-text {
   display: block;
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 3vw, 1.5rem);
   font-weight: 700;
   color: var(--color-fire-yellow);
   text-transform: uppercase;
@@ -327,6 +211,8 @@
   position: relative;
   z-index: 1;
   animation: shimmer 3s infinite;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 @keyframes shimmer {
@@ -336,58 +222,48 @@
   100% { color: var(--color-fire-yellow); }
 }
 
-
 @media (max-width: 768px) {
-  .fenix-wrapper {
-    width: 400px;
-    height: 400px;
-  }
-
-  .curved-text {
-    width: 400px;
-    height: 400px;
-  }
-
   .rotating-text {
-    font-size: 34px;
+    font-size: 6vw;
+    letter-spacing: 0.5vw;
   }
 
   .logo-container {
-    width: 250px;
-    height: 250px;
-  }
-
-  .tagline-text {
-    font-size: 1.2rem;
+    width: 70%;
   }
 }
 
 @media (max-width: 480px) {
-  .fenix-wrapper {
-    width: 300px;
-    height: 300px;
-  }
-
-  .curved-text {
-    width: 300px;
-    height: 300px;
+  .home-container {
+    padding: 1rem;
   }
 
   .rotating-text {
-    font-size: 36px;
-    letter-spacing: 4px;
-    fill: #333;
+    font-size: 7vw;
+    letter-spacing: 0.4vw;
   }
 
   .logo-container {
-    width: 200px;
-    height: 200px;
+    width: 75%;
   }
 
-  .tagline-text {
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+  .tagline {
+    padding: 0.4rem 1rem;
   }
+
+}
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 @keyframes float {

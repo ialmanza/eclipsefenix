@@ -8,7 +8,8 @@ import { PlayerDetailComponent } from './components/player-detail/player-detail.
 import { CurvedTextComponent } from './components/curved-text/curved-text.component';
 
 export const routes: Routes = [
-  {path: '',component: HomeComponent},
+  {path: '',component: CurvedTextComponent},
+  {path: 'home',component: HomeComponent},
   {path: 'reproductor',component: ReproductorComponent},
   {path: 'banner',component: BannerComponent},
   {path: 'footer',component: FooterComponent},
