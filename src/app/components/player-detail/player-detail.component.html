@@ -12,7 +12,7 @@
 
   <!-- Album Art -->
   <div class="album-artwork-container">
-    <img [src]="cancionActual?.imagen" [alt]="cancionActual?.titulo" class="album-artwork">
+    <img [src]="cancionActual?.imagen || 'solo.jpg'" [alt]="cancionActual?.titulo" class="album-artwork">
   </div>
 
   <!-- Track Info -->

@@ -14,70 +14,82 @@
   --color-green-bg: #F0F7EF;
 
   /* Variables mejoradas para animaciones y layouts */
-  --player-height: 90px;
+  --player-height: 80px; /* Reducido para mobile first */
   --player-expanded-height: 100vh;
   --transition-speed: 0.3s;
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
   --shadow-elevation: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  /* Tamaños táctiles mínimos */
+  --touch-target-size: 44px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Estilos base mejorados */
+/* Estilos base - Mobile First */
 .player-container {
   display: grid;
-  grid-template-columns: 240px 1fr; /* Lista lateral: 240px, Contenido principal: resto */
-  grid-template-rows: 1fr auto; /* Contenido: flexible, Barra reproductor: auto */
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr var(--player-height);
   height: 100vh;
   height: 100dvh; /* Soporte para viewport dinámico */
   background-color: var(--spotify-black);
   color: var(--spotify-white);
   font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
-  overflow: hidden; /* Evita scroll en el contenedor principal */
-  width: 100%;
-  position: relative;
-}
-
-/* Mejoras para la vista de lista y detalle */
-.list-view-container {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  height: 100%;
   overflow: hidden;
   width: 100%;
+  position: relative;
 }
 
-/* Mejoras para el sidebar - SOLUCIÓN SCROLL LATERAL */
+/* Sidebar - Inicialmente oculto en móvil */
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 1000;
   background-color: var(--spotify-black);
   padding: 24px 16px;
-  grid-row: 1;
-  grid-column: 1;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
   transition: transform var(--transition-speed) ease;
-  overflow-y: auto; /* Habilita scroll vertical */
-  height: calc(100vh - var(--player-height)); /* Altura restando barra de reproducción */
-  scrollbar-width: thin;
-  scrollbar-color: var(--spotify-light-grey) transparent;
-  position: relative;
-  z-index: 5;
+  box-shadow: var(--shadow-elevation);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.sidebar::-webkit-scrollbar {
-  width: 6px;
+.sidebar.active {
+  transform: translateX(0);
 }
 
-.sidebar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: var(--spotify-light-grey);
-  border-radius: 20px;
+/* Botón para mostrar sidebar - Agregar via JS si no existe */
+.sidebar-toggle {
+  display: block;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
+  background: rgba(45, 90, 39, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  color: var(--spotify-white);
+  width: var(--touch-target-size);
+  height: var(--touch-target-size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-header {
@@ -101,29 +113,22 @@
 .playlist-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  /* Asegurar que la lista se ve completa y permite scroll */
-  max-height: calc(100vh - 150px);
-  overflow-y: auto;
+  gap: 12px;
+  padding-bottom: 24px;
 }
 
 .playlist-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px;
+  padding: 12px;
   border-radius: var(--border-radius-md);
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-}
-
-.playlist-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateX(2px);
+  transition: background-color 0.2s;
 }
 
 .playlist-item:active {
-  transform: scale(0.98);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .playlist-item img {
@@ -137,6 +142,8 @@
 .playlist-info {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 0; /* Permite text-overflow */
 }
 
 .playlist-info .playlist-name {
@@ -146,31 +153,34 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 140px;
 }
 
 .playlist-info .playlist-details {
   font-size: 12px;
   color: var(--spotify-grey);
-  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Mejoras para el contenido principal - SOLUCIÓN SCROLL MAIN */
+/* Contenido principal */
 .main-content {
-  grid-column: 2;
+  grid-column: 1;
   grid-row: 1;
-  background: linear-gradient(to bottom, rgba(74, 142, 59, 0.3), var(--spotify-black));
-  padding: 24px;
-  overflow-y: auto; /* Permitir scroll vertical */
-  height: calc(100vh - var(--player-height)); /* Restar altura del reproductor */
-  scrollbar-width: thin;
-  scrollbar-color: var(--spotify-light-grey) transparent;
+  background: linear-gradient(to bottom, rgba(74, 142, 59, 0.2), var(--spotify-black) 85%);
+  padding: 16px;
+  padding-top: calc(var(--touch-target-size) + 20px); /* Espacio para botón sidebar */
+  height: calc(100vh - var(--player-height));
+  height: calc(100dvh - var(--player-height));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   position: relative;
   z-index: 1;
 }
 
+/* Ocultar scrollbar pero mantener funcionalidad */
 .main-content::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .main-content::-webkit-scrollbar-track {
@@ -184,11 +194,16 @@
 
 .current-track-info {
   display: flex;
-  align-items: flex-end;
-  gap: 28px;
-  margin-bottom: 36px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 24px;
   animation: fadeIn 0.5s ease;
-  cursor: pointer;
+}
+
+.default-track {
+  margin-top: 10vh;
 }
 
 @keyframes fadeIn {
@@ -197,62 +212,66 @@
 }
 
 .current-track-image {
-  width: 232px;
-  height: 232px;
-  box-shadow: var(--shadow-elevation);
+  width: min(240px, 70vw);
+  height: min(240px, 70vw);
   border-radius: var(--border-radius-lg);
-  transition: transform 0.3s ease;
-}
-
-.current-track-image:hover {
-  transform: scale(1.02);
+  box-shadow: var(--shadow-elevation);
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .track-details {
-  overflow: hidden;
+  width: 100%;
+  text-align: center;
 }
 
 .track-details h1 {
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 800;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   letter-spacing: -0.5px;
-  line-height: 1.1;
+  line-height: 1.2;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .track-details p {
   font-size: 16px;
   color: var(--spotify-grey);
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
-/* Mejoras para la lista de canciones */
+/* Lista de canciones */
 .tracks-list {
-  margin-top: 36px;
+  margin-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 24px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .track-item {
   display: grid;
-  grid-template-columns: 40px 56px 1fr auto auto; /* Añadido espacio para botón favorito */
+  grid-template-columns: 32px 48px 1fr auto;
   align-items: center;
-  padding: 10px;
+  gap: 8px;
+  padding: 12px 8px;
   border-radius: var(--border-radius-md);
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
   margin-bottom: 4px;
-}
-
-.track-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  min-height: 64px; /* Altura mínima para touch */
 }
 
 .track-item:active {
-  transform: scale(0.99);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .track-item.active {
@@ -271,11 +290,6 @@
   border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
 }
 
-.track-item.active .track-number {
-  color: var(--spotify-white);
-  font-weight: 700;
-}
-
 .track-number {
   color: var(--spotify-grey);
   font-size: 14px;
@@ -287,20 +301,16 @@
   height: 40px;
   border-radius: var(--border-radius-md);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-}
-
-.track-item:hover .track-image {
-  transform: scale(1.05);
 }
 
 .track-info {
-  margin-left: 16px;
+  margin-left: 4px;
   overflow: hidden;
+  min-width: 0; /* Permite text-overflow */
 }
 
 .track-info .track-name {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   margin-bottom: 4px;
   white-space: nowrap;
@@ -309,7 +319,7 @@
 }
 
 .track-info .track-artist {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--spotify-grey);
   white-space: nowrap;
   overflow: hidden;
@@ -318,50 +328,55 @@
 
 .track-duration {
   color: var(--spotify-grey);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
-  padding-right: 8px;
+  padding-right: 4px;
 }
 
-/* Mejoras para la barra del reproductor */
+/* Barra del reproductor */
 .player-bar {
-  grid-column: 1 / -1;
+  grid-column: 1;
   grid-row: 2;
   background-color: var(--spotify-dark-grey);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 16px;
-  height: var(--player-height);
-  transition: height 0.3s ease;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  padding: 12px 8px;
+  padding-bottom: calc(12px + var(--safe-bottom));
+  height: auto;
+  min-height: var(--player-height);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
   z-index: 100;
   position: relative;
 }
 
 .now-playing-bar {
-  display: grid;
-  grid-template-columns: 30% 40% 30%;
-  align-items: center;
-  height: 100%;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .now-playing-left {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  cursor: pointer;
+  width: 100%;
+  order: 1;
+}
+
+.now-playing-left-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  min-width: 0;
+  flex: 1;
 }
 
 .mini-track-image {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--border-radius-md);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-}
-
-.mini-track-image:hover {
-  transform: scale(1.05);
+  flex-shrink: 0;
 }
 
 .like-button {
@@ -369,18 +384,18 @@
   border: none;
   color: var(--spotify-grey);
   cursor: pointer;
-  padding: 8px;
-  transition: all 0.2s;
+  min-height: var(--touch-target-size);
+  min-width: var(--touch-target-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   border-radius: 50%;
-  z-index: 2;
-}
-
-.like-button:hover {
-  color: var(--spotify-white);
-  transform: scale(1.1);
+  flex-shrink: 0;
 }
 
 .like-button:active {
+  color: var(--spotify-white);
   transform: scale(0.9);
 }
 
@@ -392,16 +407,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   gap: 12px;
+  order: 0;
 }
 
 .player-controls {
   display: flex;
   align-items: center;
-  gap: 20px;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  order: 2;
 }
 
 .control-button {
@@ -409,27 +426,23 @@
   border: none;
   color: var(--spotify-grey);
   cursor: pointer;
-  padding: 8px;
-  transition: all 0.2s;
-  border-radius: 50%;
+  min-height: var(--touch-target-size);
+  min-width: var(--touch-target-size);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.control-button:hover {
-  color: var(--spotify-white);
-  transform: scale(1.1);
+  padding: 0;
+  border-radius: 50%;
 }
 
 .control-button:active {
+  color: var(--spotify-white);
   transform: scale(0.9);
 }
 
 .control-button:disabled {
   opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
+  pointer-events: none;
 }
 
 .control-button.active {
@@ -440,20 +453,16 @@
   background-color: var(--spotify-white);
   border: none;
   color: var(--spotify-black);
-  width: 40px;
-  height: 40px;
+  min-width: 48px;
+  min-height: 48px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.play-button:hover {
-  transform: scale(1.1);
-  background-color: #fff;
 }
 
 .play-button:active {
@@ -465,36 +474,55 @@
   align-items: center;
   gap: 8px;
   width: 100%;
+  padding: 0 4px;
 }
 
 .progress-slider {
-  width: 100%;
+  flex: 1;
   height: 4px;
   -webkit-appearance: none;
   appearance: none;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
   outline: none;
-  margin-bottom: 0.5rem;
+  margin: 0;
+  position: relative;
+}
 
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--spotify-white);
-    cursor: pointer;
-  }
+.progress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--spotify-white);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+}
 
-  &::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--spotify-white);
-    cursor: pointer;
-    border: none;
-  }
+.progress-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--spotify-white);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: none;
+  position: relative;
+  z-index: 2;
+}
+
+/* Área táctil más amplia para el slider */
+.progress-slider::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  z-index: 1;
 }
 
 .time-current, .time-total {
@@ -507,9 +535,11 @@
 
 .now-playing-right {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  justify-content: flex-end;
+  width: 100%;
+  gap: 12px;
+  order: 2;
 }
 
 .volume-button {
@@ -517,17 +547,17 @@
   border: none;
   color: var(--spotify-grey);
   cursor: pointer;
-  padding: 8px;
-  transition: all 0.2s;
+  min-height: var(--touch-target-size);
+  min-width: var(--touch-target-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   border-radius: 50%;
 }
 
-.volume-button:hover {
-  color: var(--spotify-white);
-  transform: scale(1.1);
-}
-
 .volume-button:active {
+  color: var(--spotify-white);
   transform: scale(0.9);
 }
 
@@ -536,7 +566,7 @@
   height: 4px;
   appearance: none;
   -webkit-appearance: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
   outline: none;
   position: relative;
@@ -545,28 +575,27 @@
 
 .volume-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   background: var(--spotify-white);
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.2s;
-  opacity: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.volume-slider:hover::-webkit-slider-thumb {
-  opacity: 1;
-  transform: scale(1.2);
-}
-
-.volume-slider:active::-webkit-slider-thumb {
-  transform: scale(1.4);
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--spotify-white);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: none;
 }
 
 /* Vista de detalle */
 .detail-view-container {
-  grid-column: 1 / -1;
+  grid-column: 1;
   grid-row: 1 / -1;
   height: 100vh;
   height: 100dvh;
@@ -574,293 +603,95 @@
   position: relative;
 }
 
-/* Media queries mejorados - desktop pequeño */
-@media screen and (max-width: 1024px) {
-  .player-container {
-    grid-template-columns: 220px 1fr;
+/* Botón flotante para mostrar/ocultar lista de reproducción */
+.playlist-toggle {
+  position: fixed;
+  bottom: calc(var(--player-height) + 16px);
+  right: 16px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--spotify-green);
+  color: var(--spotify-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  border: none;
+}
+
+.playlist-toggle:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Media queries para tablet y escritorio */
+@media screen and (min-width: 576px) {
+  /* Ajustes para tablets */
+  :host {
+    --player-height: 90px;
   }
 
-  .list-view-container {
-    grid-template-columns: 220px 1fr;
+  .player-bar {
+    padding: 12px 16px;
   }
 
-  .sidebar {
-    padding: 20px 12px;
+  .now-playing-bar {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 8px;
   }
 
-  .current-track-image {
-    width: 180px;
-    height: 180px;
+  .now-playing-left,
+  .now-playing-center,
+  .now-playing-right {
+    order: initial;
+  }
+
+  .current-track-info {
+    margin-top: 24px;
   }
 
   .track-details h1 {
     font-size: 28px;
   }
 
-  .now-playing-bar {
-    grid-template-columns: 25% 50% 25%;
+  .track-item {
+    grid-template-columns: 40px 56px 1fr auto;
+    padding: 12px;
   }
 
-  .player-controls {
-    gap: 16px;
-  }
-}
-
-/* Tablet */
-@media screen and (max-width: 768px) {
-  .player-container {
-    grid-template-columns: 180px 1fr;
+  .track-info .track-name {
+    font-size: 16px;
   }
 
-  .list-view-container {
-    grid-template-columns: 180px 1fr;
-  }
-
-  .sidebar {
-    padding: 16px 12px;
-  }
-
-  .playlist-item img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .playlist-info .playlist-name {
-    max-width: 100px;
-  }
-
-  .current-track-image {
-    width: 150px;
-    height: 150px;
-  }
-
-  .track-details h1 {
-    font-size: 24px;
-  }
-
-  .now-playing-right {
-    gap: 4px;
-  }
-
-  .volume-slider {
-    width: 80px;
-  }
-}
-
-/* Móvil - SOLUCIÓN ESPECÍFICA PARA MÓVILES */
-@media screen and (max-width: 576px) {
-  .player-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
-  }
-
-  .list-view-container {
-    grid-template-columns: 1fr;
-    overflow: hidden;
-  }
-
-  /* Ocultar sidebar por defecto en móvil, agregar clase .active para mostrar */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    z-index: 1000;
-    background-color: var(--spotify-black);
-    padding: 24px 16px;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    box-shadow: var(--shadow-elevation);
-    display: block; /* Mantener en DOM pero oculto */
-    overflow-y: auto; /* Permitir scroll */
-    -webkit-overflow-scrolling: touch; /* Para scroll suave en iOS */
-  }
-
-  .sidebar.active {
-    transform: translateX(0);
-  }
-
-  /* Botón para mostrar sidebar - Agregar en componente si es necesario */
-  .sidebar-toggle {
-    display: block;
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    z-index: 100;
-    background: rgba(45, 90, 39, 0.7);
-    backdrop-filter: blur(10px);
-    border: none;
-    color: var(--spotify-white);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  .main-content {
-    grid-column: 1;
-    padding: 16px;
-    padding-top: 60px; /* Espacio para botón sidebar */
-    height: calc(100vh - var(--player-height));
-    overflow-y: auto; /* IMPORTANTE: Forzar scroll */
-    -webkit-overflow-scrolling: touch; /* Scroll suave iOS */
-  }
-
-  .current-track-info {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
-  .current-track-image {
-    width: min(200px, 70vw);
-    height: min(200px, 70vw);
-    margin: 0 auto;
-  }
-
-  .track-details {
-    text-align: center;
-  }
-
-  .track-details h1 {
-    font-size: 24px;
-    margin-bottom: 8px;
-  }
-
-  .track-details p {
+  .track-info .track-artist {
     font-size: 14px;
   }
 
-  .track-item {
-    grid-template-columns: 24px 48px 1fr auto auto; /* Añadido espacio para botón favorito */
-    gap: 8px;
-    padding: 8px 4px;
-  }
-
-  .track-info {
-    margin-left: 8px;
-    max-width: calc(100% - 40px);
-  }
-
-  /* Player bar mejorado para móvil */
-  .player-bar {
-    height: auto;
-    min-height: var(--player-height);
-    padding: 12px 8px;
-    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-  }
-
-  .now-playing-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .now-playing-left {
-    justify-content: center;
-    width: 100%;
-    order: 1;
-  }
-
-  .now-playing-center {
-    order: 0;
-    width: 100%;
-  }
-
-  .now-playing-right {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    order: 2;
-    gap: 12px;
-  }
-
-  /* Botón flotante para mostrar/ocultar lista de reproducción */
-  .playlist-toggle {
-    position: fixed;
-    bottom: 100px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--spotify-green);
-    color: var(--spotify-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    z-index: 100;
-    border: none;
-    transform: translateY(0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .playlist-toggle:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Touch-friendly controls para evitar problemas de clic */
-  .control-button, .play-button, .volume-button, .like-button {
-    min-height: 44px;
-    min-width: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .progress-slider::before {
+    top: -10px;
+    bottom: -10px;
   }
 }
 
-/* Media query para dispositivos muy pequeños */
-@media screen and (max-width: 360px) {
-  .current-track-image {
-    width: min(160px, 80vw);
-    height: min(160px, 80vw);
-  }
-
-  .track-details h1 {
-    font-size: 20px;
-  }
-
-  .player-controls {
-    gap: 12px;
-  }
-
-  .control-button {
-    padding: 6px;
-  }
-
-  .play-button {
-    width: 42px;
-    height: 42px;
-  }
-}
-
-/* Mejoras para la orientación landscape en móviles */
-@media screen and (max-height: 480px) and (orientation: landscape) {
+@media screen and (min-width: 768px) {
+  /* Ajustes para pantallas medianas */
   .player-container {
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: 1fr auto;
-  }
-
-  .list-view-container {
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 220px 1fr;
   }
 
   .sidebar {
-    display: block;
     position: relative;
     transform: none;
-    width: 200px;
-    z-index: 1;
+    width: 220px;
+    height: calc(100vh - var(--player-height));
+    height: calc(100dvh - var(--player-height));
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 5;
   }
 
   .sidebar-toggle {
@@ -868,73 +699,147 @@
   }
 
   .main-content {
-    padding-top: 16px;
+    grid-column: 2;
+    padding: 24px;
+    padding-top: 24px;
+  }
+
+  .player-bar {
+    grid-column: 1 / -1;
+  }
+
+  .current-track-info {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-end;
+  }
+
+  .track-details {
+    text-align: left;
+  }
+
+  .playlist-toggle {
+    display: none;
+  }
+
+  .current-track-image {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  /* Ajustes para escritorio */
+  .player-container {
+    grid-template-columns: 240px 1fr;
+  }
+
+  .sidebar {
+    width: 240px;
+  }
+
+  .current-track-image {
+    width: 232px;
+    height: 232px;
+  }
+
+  .track-details h1 {
+    font-size: 32px;
+  }
+
+  .track-item {
+    grid-template-columns: 40px 56px 1fr auto;
+  }
+
+  .now-playing-bar {
+    grid-template-columns: 30% 40% 30%;
+  }
+
+  .play-button {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* Mejoras para orientación landscape en móviles */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+  .player-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 60px;
+  }
+
+  .player-bar {
+    height: 60px;
+    min-height: 60px;
   }
 
   .current-track-info {
     flex-direction: row;
     align-items: center;
     gap: 16px;
-    text-align: left;
+    margin-top: 8px;
   }
 
   .current-track-image {
     width: 100px;
     height: 100px;
-    margin: 0;
-  }
-
-  .track-details {
-    text-align: left;
-  }
-
-  .player-bar {
-    height: 60px;
   }
 
   .now-playing-bar {
     display: grid;
     grid-template-columns: 30% 40% 30%;
-    flex-direction: row;
   }
 
-  .now-playing-left, .now-playing-center, .now-playing-right {
-    order: unset;
+  .now-playing-left,
+  .now-playing-center,
+  .now-playing-right {
+    order: initial;
+  }
+
+  .track-item {
+    grid-template-columns: 32px 40px 1fr auto;
+    min-height: 56px;
+  }
+}
+
+/* Fix para iOS safe area */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .player-bar {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+
+  .sidebar {
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
   }
 
   .playlist-toggle {
-    display: none;
+    bottom: calc(var(--player-height) + env(safe-area-inset-bottom) + 16px);
   }
 }
 
-/* Fixes específicos para problemas comunes */
-/* Fix para iOS scroll */
-.main-content, .sidebar {
-  -webkit-overflow-scrolling: touch;
+/* Fix para dispositivos con notch */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .sidebar {
+    padding-top: calc(24px + env(safe-area-inset-top));
+  }
+
+  .main-content {
+    padding-top: calc(var(--touch-target-size) + 20px + env(safe-area-inset-top));
+  }
+
+  .sidebar-toggle {
+    top: calc(16px + env(safe-area-inset-top));
+  }
 }
 
-/* Fix para que el botón de favorito no desencadene otros clics */
-.like-button {
-  position: relative;
-  z-index: 10;
-}
-
-/* Manejar overflow en textos largos */
-.track-info .track-name,
-.track-info .track-artist,
-.track-details h1,
-.track-details p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Evitar issues con alturas en safari */
+/* Fix para alturas dinámicas en diferentes navegadores */
 @supports (-webkit-touch-callout: none) {
   .player-container {
     height: -webkit-fill-available;
   }
 
-  .main-content, .sidebar {
+  .main-content,
+  .sidebar {
     height: calc(100vh - var(--player-height));
     height: calc(-webkit-fill-available - var(--player-height));
   }

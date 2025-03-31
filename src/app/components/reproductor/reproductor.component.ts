@@ -11,7 +11,8 @@ import {
   faShuffle,
   faRepeat,
   faHeart,
-  faListUl
+  faListUl,
+  faExpand
 } from '@fortawesome/free-solid-svg-icons';
 import { PlayerDetailComponent } from "../player-detail/player-detail.component";
 
@@ -22,6 +23,7 @@ interface Cancion {
   duracion: string;
   archivo: string;
   imagen: string;
+  favorito?: boolean;
 }
 
 @Component({
@@ -42,6 +44,9 @@ export class ReproductorComponent implements OnInit {
   iconoRepetir = faRepeat;
   iconoCorazon = faHeart;
   iconoLista = faListUl;
+  iconoCorazonLleno = faHeart;
+  iconoExpand = faExpand;
+  sidebarVisible = false;
 
   canciones: Cancion[] = [
     {
@@ -50,7 +55,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Roxy",
       duracion: "4:05",
       archivo: "/musica/Alan Walker _ Ava Max - Alone_ Pt. II(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Roxy.webp"
+      imagen: "/reproductoryfrases/Roxy.webp",
+      favorito: false
     },
     {
       id: 2,
@@ -58,7 +64,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Daimita",
       duracion: "2:54",
       archivo: "/musica/Amigos(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Daimita.webp"
+      imagen: "/reproductoryfrases/Daimita.webp",
+      favorito: false
     },
     {
       id: 3,
@@ -66,15 +73,17 @@ export class ReproductorComponent implements OnInit {
       artista: "Maria",
       duracion: "5:12",
       archivo: "/musica/Ángel Bonne - AMIGOS(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Maria.webp"
+      imagen: "/reproductoryfrases/Maria.webp",
+      favorito: false
     },
     {
       id: 4,
       titulo: "Billy Joel - Piano Man",
-      artista: "Einy",
+      artista: "Eyni",
       duracion: "5:39",
       archivo: "/musica/Billy Joel - Piano Man (Lyrics)(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Einy.webp"
+      imagen: "/reproductoryfrases/Einy.webp",
+      favorito: false
     },
     {
       id: 5,
@@ -82,7 +91,8 @@ export class ReproductorComponent implements OnInit {
       artista: "La tía Lily",
       duracion: "3:12",
       archivo: "/musica/Bruno Mars - Count on Me (Official Lyric Video)(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Lily.webp"
+      imagen: "/reproductoryfrases/Lily.webp",
+      favorito: false
     },
     {
       id: 6,
@@ -90,7 +100,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Ney",
       duracion: "4:24",
       archivo: "/musica/Color Esperanza Diego Torres con letra(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Ney.webp"
+      imagen: "/reproductoryfrases/Ney2.webp",
+      favorito: false
     },
     {
       id: 7,
@@ -98,7 +109,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Yude",
       duracion: "3:28",
       archivo: "/musica/Contigo En La Distancia - César Portillo De La Luz(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Yude.webp"
+      imagen: "/reproductoryfrases/Yude2.webp",
+      favorito: false
     },
     {
       id: 8,
@@ -106,7 +118,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Dani",
       duracion: "4:16",
       archivo: "/musica/Dionne Warwick - That_s What Friends Are For (Lyrics)(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Dani.webp"
+      imagen: "/reproductoryfrases/Dani.webp",
+      favorito: false
     },
     {
       id: 9,
@@ -114,7 +127,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Alieny",
       duracion: "2:50",
       archivo: "/musica/En todas partes(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Alieny.webp"
+      imagen: "/reproductoryfrases/Alieny2.webp",
+      favorito: false
     },
     {
       id: 10,
@@ -122,7 +136,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Ilia",
       duracion: "4:39",
       archivo: "/musica/La amistad - Laura Pausini (lyrics) ♥(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Ilia.webp"
+      imagen: "/reproductoryfrases/Ilia.webp",
+      favorito: false
     },
     {
       id: 11,
@@ -130,7 +145,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Diana",
       duracion: "4:07",
       archivo: "/musica/No Me Voy - OV7 subtitulada(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Diana.webp"
+      imagen: "/reproductoryfrases/Diana.webp",
+      favorito: false
     },
     {
       id: 12,
@@ -138,7 +154,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Eliany",
       duracion: "3:15",
       archivo: "/musica/Nuestra Amistad (Tercer cielo) _Letra_(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Eliany.webp"
+      imagen: "/reproductoryfrases/Eliany2.webp",
+      favorito: false
     },
     {
       id: 13,
@@ -146,7 +163,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Indira",
       duracion: "4:13",
       archivo: "/musica/RDM  - Imagine(MP3_128K).mp3",
-      imagen: "/reproductoryfrases/Indra.webp"
+      imagen: "/reproductoryfrases/Indra2.webp",
+      favorito: false
     },
     {
       id: 14,
@@ -154,7 +172,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Iza",
       duracion: "4:11",
       archivo: "/musica/Rihanna - Only Girl (In The World)(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Iza.webp"
+      imagen: "/reproductoryfrases/Iza.webp",
+      favorito: false
     },
     {
       id: 15,
@@ -162,7 +181,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Sai",
       duracion: "3:38",
       archivo: "/musica/Río Roma - Cuenta Conmigo (Cover Audio)(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Sai.webp"
+      imagen: "/reproductoryfrases/Sai.webp",
+      favorito: false
     },
     {
       id: 16,
@@ -170,7 +190,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Valeria",
       duracion: "3:51",
       archivo: "/musica/Sia - Chandelier (Official Video)(MP3_160K).mp3",
-      imagen: "/distancia/Sely.webp"
+      imagen: "/reproductoryfrases/Sely2.webp",
+      favorito: false
     },
     {
       id: 17,
@@ -178,7 +199,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Sely",
       duracion: "4:07",
       archivo: "/musica/TU AMISTAD ME HACE BIEN I Alex Campos I Vídeo Oficial(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Sely.webp"
+      imagen: "/reproductoryfrases/Sely.webp",
+      favorito: false
     },
     {
       id: 18,
@@ -202,7 +224,7 @@ export class ReproductorComponent implements OnInit {
       artista: "Claudia",
       duracion: "3:54",
       archivo: "/musica/_I_ll Be There For You_ (Friends Theme Song)(MP3_128K).mp3",
-      imagen: "/reproductoryfrases/Claudia.webp"
+      imagen: "/reproductoryfrases/Claudia2.webp"
     },
     {
       id: 21,
@@ -250,12 +272,12 @@ export class ReproductorComponent implements OnInit {
       artista: "Lis",
       duracion: "1:57",
       archivo: "/musica/Yami Safdie_ Camilo - Querida Yo (Official Video)(MP3_128K).mp3",
-      imagen: "/reproductoryfrases/Lisnaydis.webp"
+      imagen: "/reproductoryfrases/Lisnaydis2.webp"
     },
     {
       id: 27,
       titulo: "Pablo López y Antonio Orozco - _Lo saben mis zapatos",
-      artista: "Lily (no tía)",
+      artista: "Lily Alexa",
       duracion: "4:48",
       archivo: "/musica/Pablo López y Antonio Orozco – _Lo saben mis zapatos_ (Pablo López Sin Anestesia)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Lilyy.webp"
@@ -298,9 +320,8 @@ export class ReproductorComponent implements OnInit {
       artista: "Yenisel",
       duracion: "4:23",
       archivo: "/musica/Pablo Alborán - Gracias (Audio oficial)(MP3_128K).mp3",
-      imagen: "/reproductoryfrases/Yenisel.webp"
+      imagen: "/reproductoryfrases/Yenisel2.webp"
     },
-    // Añade más canciones según necesites
   ];
 
   cancionActual: Cancion | null = null;
@@ -497,9 +518,9 @@ export class ReproductorComponent implements OnInit {
     this.isRepeatOn = !this.isRepeatOn;
   }
 
-  toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
-  }
+  // toggleSidebar() {
+  //   this.sidebarOpen = !this.sidebarOpen;
+  // }
 
    // Funciones para gestionar la vista detallada
    volverALista() {
@@ -513,31 +534,60 @@ export class ReproductorComponent implements OnInit {
   }
 
   // Funciones para favoritos
-  toggleFavorito() {
-    if (!this.cancionActual) return;
+  // toggleFavorito() {
+  //   if (!this.cancionActual) return;
 
-    const index = this.cancionesFavoritas.indexOf(this.cancionActual.id);
-    if (index === -1) {
-      // Añadir a favoritos
-      this.cancionesFavoritas.push(this.cancionActual.id);
-    } else {
-      // Quitar de favoritos
-      this.cancionesFavoritas.splice(index, 1);
-    }
-  }
+  //   const index = this.cancionesFavoritas.indexOf(this.cancionActual.id);
+  //   if (index === -1) {
+  //     // Añadir a favoritos
+  //     this.cancionesFavoritas.push(this.cancionActual.id);
+  //   } else {
+  //     // Quitar de favoritos
+  //     this.cancionesFavoritas.splice(index, 1);
+  //   }
+  // }
 
   esFavorito(id: number): boolean {
     return this.cancionesFavoritas.includes(id);
   }
 
   // En el componente principal
-toggleDetalle() {
-  this.mostrarDetalle = !this.mostrarDetalle;
-  // Añadir/quitar clase al host element
-  if (this.mostrarDetalle) {
-    this.elementRef.nativeElement.classList.add('detail-mode');
-  } else {
-    this.elementRef.nativeElement.classList.remove('detail-mode');
+  toggleDetalle() {
+    this.mostrarDetalle = !this.mostrarDetalle;
+    // Añadir/quitar clase al host element
+    if (this.mostrarDetalle) {
+      this.elementRef.nativeElement.classList.add('detail-mode');
+    } else {
+      this.elementRef.nativeElement.classList.remove('detail-mode');
+    }
   }
-}
+
+  // Añadir esta función para el toggle del sidebar
+  toggleSidebar() {
+    this.sidebarVisible = !this.sidebarVisible;
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+      if (this.sidebarVisible) {
+        sidebar.classList.add('active');
+      } else {
+        sidebar.classList.remove('active');
+      }
+    }
+  }
+
+  // Modificar la función verDetalle para cerrar sidebar si está abierto
+  verDetalle() {
+    if (this.sidebarVisible) {
+      this.toggleSidebar();
+    }
+    this.mostrarDetalle = true;
+  }
+
+  // Si tienes función para toggleFavorito, úsala; si no, impleméntala:
+  toggleFavorito() {
+    if (this.cancionActual) {
+      this.cancionActual.favorito = !this.cancionActual.favorito;
+      // Aquí puedes agregar lógica para guardar el estado
+    }
+  }
 }
