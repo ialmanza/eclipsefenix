@@ -14,7 +14,7 @@
   --color-green-bg: #F0F7EF;
 
   /* Variables mejoradas para animaciones y layouts */
-  --player-height: 80px; /* Reducido para mobile first */
+  --player-height: 90px; /* Aumentado para dar más espacio a los botones */
   --player-expanded-height: 100vh;
   --transition-speed: 0.3s;
   --border-radius-sm: 4px;
@@ -25,6 +25,9 @@
   /* Tamaños táctiles mínimos */
   --touch-target-size: 44px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Variable para el padding extra en la parte inferior */
+  --player-bottom-padding: 16px;
 }
 
 * {
@@ -46,6 +49,8 @@
   overflow: hidden;
   width: 100%;
   position: relative;
+  /* Prevenir scroll de la página cuando se interactúa con el reproductor */
+  overscroll-behavior: none;
 }
 
 /* Sidebar - Inicialmente oculto en móvil */
@@ -176,6 +181,8 @@
   -webkit-overflow-scrolling: touch;
   position: relative;
   z-index: 1;
+  /* Ajustar para dejar espacio para el bottom margin en el contenido */
+  padding-bottom: calc(20px + var(--player-bottom-padding));
 }
 
 /* Ocultar scrollbar pero mantener funcionalidad */
@@ -340,18 +347,25 @@
   background-color: var(--spotify-dark-grey);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 12px 8px;
-  padding-bottom: calc(12px + var(--safe-bottom));
+  /* Aumentar el padding inferior para dar más espacio a los botones */
+  padding-bottom: calc(var(--player-bottom-padding) + var(--safe-bottom));
   height: auto;
   min-height: var(--player-height);
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
   z-index: 100;
   position: relative;
+  /* Fix para evitar que se mueva la pantalla al interactuar */
+  touch-action: manipulation;
+  -webkit-overflow-scrolling: none;
 }
 
 .now-playing-bar {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  /* Centrar el contenido verticalmente */
+  height: 100%;
+  justify-content: center;
 }
 
 .now-playing-left {
@@ -392,6 +406,8 @@
   padding: 0;
   border-radius: 50%;
   flex-shrink: 0;
+  /* Evitar comportamiento predeterminado de eventos touch */
+  touch-action: manipulation;
 }
 
 .like-button:active {
@@ -419,6 +435,8 @@
   gap: 24px;
   width: 100%;
   order: 2;
+  /* Asegurar que los botones tengan suficiente espacio vertical */
+  padding: 4px 0;
 }
 
 .control-button {
@@ -433,6 +451,8 @@
   justify-content: center;
   padding: 0;
   border-radius: 50%;
+  /* Prevenir comportamientos de scroll no deseados */
+  touch-action: manipulation;
 }
 
 .control-button:active {
@@ -463,6 +483,20 @@
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  /* Área de toque más grande pero visualmente igual */
+  position: relative;
+  touch-action: manipulation;
+}
+
+/* Aumentar el área de toque sin cambiar el aspecto visual */
+.play-button::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
 }
 
 .play-button:active {
@@ -475,6 +509,8 @@
   gap: 8px;
   width: 100%;
   padding: 0 4px;
+  /* Aumentar la altura del contenedor para área táctil más grande */
+  height: 24px;
 }
 
 .progress-slider {
@@ -487,6 +523,8 @@
   outline: none;
   margin: 0;
   position: relative;
+  /* Asegurar que no se mueva la pantalla al deslizar */
+  touch-action: none;
 }
 
 .progress-slider::-webkit-slider-thumb {
@@ -554,6 +592,7 @@
   justify-content: center;
   padding: 0;
   border-radius: 50%;
+  touch-action: manipulation;
 }
 
 .volume-button:active {
@@ -571,6 +610,8 @@
   outline: none;
   position: relative;
   cursor: pointer;
+  /* Evitar que se desplace la pantalla al ajustar volumen */
+  touch-action: none;
 }
 
 .volume-slider::-webkit-slider-thumb {
@@ -620,6 +661,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 100;
   border: none;
+  touch-action: manipulation;
 }
 
 .playlist-toggle:active {
@@ -631,7 +673,8 @@
 @media screen and (min-width: 576px) {
   /* Ajustes para tablets */
   :host {
-    --player-height: 90px;
+    --player-height: 100px; /* Aumentado para dar más espacio a los controles */
+    --player-bottom-padding: 20px; /* Mayor padding en tablets */
   }
 
   .player-bar {
@@ -674,6 +717,10 @@
   .progress-slider::before {
     top: -10px;
     bottom: -10px;
+  }
+
+  .player-controls {
+    padding: 8px 0;
   }
 }
 
@@ -730,6 +777,11 @@
 
 @media screen and (min-width: 1024px) {
   /* Ajustes para escritorio */
+  :host {
+    --player-height: 100px;
+    --player-bottom-padding: 24px; /* Mayor padding en escritorio */
+  }
+
   .player-container {
     grid-template-columns: 240px 1fr;
   }
@@ -753,24 +805,35 @@
 
   .now-playing-bar {
     grid-template-columns: 30% 40% 30%;
+    align-items: center;
   }
 
   .play-button {
     width: 56px;
     height: 56px;
   }
+
+  /* Espacio extra para los controles en desktop */
+  .player-controls {
+    padding: 12px 0;
+  }
 }
 
 /* Mejoras para orientación landscape en móviles */
 @media screen and (max-height: 480px) and (orientation: landscape) {
+  :host {
+    --player-height: 70px; /* Altura optimizada para landscape */
+    --player-bottom-padding: 12px; /* Padding ajustado */
+  }
+
   .player-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 60px;
+    grid-template-rows: 1fr var(--player-height);
   }
 
   .player-bar {
-    height: 60px;
-    min-height: 60px;
+    height: var(--player-height);
+    min-height: var(--player-height);
   }
 
   .current-track-info {
@@ -800,12 +863,21 @@
     grid-template-columns: 32px 40px 1fr auto;
     min-height: 56px;
   }
+
+  /* Ajustes específicos para landscape y mejorar la UX */
+  .player-controls {
+    gap: 16px; /* Reducir gap en landscape para caber mejor */
+  }
+
+  .progress-bar {
+    height: 20px; /* Reducido ligeramente en landscape */
+  }
 }
 
 /* Fix para iOS safe area */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .player-bar {
-    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    padding-bottom: calc(var(--player-bottom-padding) + env(safe-area-inset-bottom));
   }
 
   .sidebar {
@@ -814,6 +886,11 @@
 
   .playlist-toggle {
     bottom: calc(var(--player-height) + env(safe-area-inset-bottom) + 16px);
+  }
+
+  /* Asegurar que el contenido no quede debajo de los controles del sistema */
+  .main-content {
+    padding-bottom: calc(20px + var(--player-bottom-padding) + env(safe-area-inset-bottom));
   }
 }
 
@@ -843,4 +920,21 @@
     height: calc(100vh - var(--player-height));
     height: calc(-webkit-fill-available - var(--player-height));
   }
+}
+
+/* Fix para evitar movimientos no deseados al interactuar con elementos táctiles */
+input[type="range"],
+button {
+  touch-action: manipulation;
+}
+
+/* Prevenir selección de texto */
+.player-bar,
+.control-button,
+.play-button,
+.like-button,
+.volume-button,
+.playlist-toggle {
+  user-select: none;
+  -webkit-user-select: none;
 }
