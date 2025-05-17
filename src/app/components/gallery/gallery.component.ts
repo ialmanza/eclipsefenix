@@ -123,6 +123,24 @@ export class GalleryComponent {
           url: 'encuentros/febrero2025.webp',
           thumbnail: 'encuentros/febrero2025.webp',
           caption: 'Febrero 2025'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/abril2025.webp',
+          thumbnail: 'encuentros/abril2025.webp',
+          caption: 'Abril 2025'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/latomadera2025.webp',
+          thumbnail: 'encuentros/latomadera2025.webp',
+          caption: 'La Tomadera 2025'
+        },
+        {
+          type: 'image',
+          url: 'encuentros/cumpledeleso2025.webp',
+          thumbnail: 'encuentros/cumpledeleso2025.webp',
+          caption: 'Cumple del Eso 2025'
         }
 
       ]

@@ -40,13 +40,6 @@
 
   <!-- Main Content -->
   <div class="main-content">
-    <!-- <div class="now-playing-header">
-      <div class="header-controls">
-        <button class="header-button">
-          <fa-icon [icon]="iconoCorazon"></fa-icon>
-        </button>
-      </div>
-    </div> -->
 
     <div class="current-track-info" *ngIf="cancionActual">
       <img [src]="cancionActual.imagen" [alt]="cancionActual.titulo" class="current-track-image">
@@ -58,7 +51,6 @@
 
     <!-- Mostrar imagen por defecto cuando no hay canción seleccionada -->
     <div class="current-track-info default-track" *ngIf="!cancionActual">
-      <!-- <img src="ruleta.webp" alt="Selecciona una canción" class="current-track-image"> -->
       <img src="solo.jpg" alt="Selecciona una canción" class="current-track-image">
       <div class="track-details">
         <h1>Selecciona una canción</h1>
@@ -85,13 +77,7 @@
   <div class="player-bar" *ngIf="!mostrarDetalle">
     <div class="now-playing-bar">
       <div class="now-playing-left">
-        <!-- <div class="now-playing-left-info">
-          <img [src]="cancionActual?.imagen || 'solo.jpg'" [alt]="cancionActual?.titulo" class="mini-track-image">
-          <div class="track-info">
-            <div class="track-name">{{cancionActual?.titulo || 'Selecciona una canción'}}</div>
-            <div class="track-artist">{{cancionActual?.artista || 'Artista'}}</div>
-          </div>
-        </div> -->
+
         <button class="like-button" (click)="toggleFavorito()">
           <fa-icon [icon]="cancionActual?.favorito ? iconoCorazonLleno : iconoCorazon"></fa-icon>
         </button>
@@ -132,11 +118,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Botón para mostrar sidebar en móvil -->
-  <!-- <button class="sidebar-toggle" *ngIf="!mostrarDetalle" (click)="toggleSidebar()">
-    <fa-icon [icon]="iconoLista"></fa-icon>
-  </button> -->
 
   <!-- Botón para mostrar toggle de lista en móvil -->
   <button class="playlist-toggle" *ngIf="!mostrarDetalle" (click)="verDetalle()">

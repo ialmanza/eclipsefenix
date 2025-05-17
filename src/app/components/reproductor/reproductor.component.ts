@@ -296,7 +296,7 @@ export class ReproductorComponent implements OnInit {
       artista: "Yanet",
       duracion: "3:03",
       archivo: "/musica/Kelly Clarkson - Underneath the Tree (Official Audio)(MP3_128K).mp3",
-      imagen: "/reproductoryfrases/Yanet.webp"
+      imagen: "/reproductoryfrases/yaneth.webp"
     },
     {
       id: 30,
