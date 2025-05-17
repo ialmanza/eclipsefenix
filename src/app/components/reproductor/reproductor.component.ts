@@ -178,7 +178,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 15,
       titulo: "Río Roma - Cuenta Conmigo",
-      artista: "Sai",
+      artista: "Say",
       duracion: "3:38",
       archivo: "/musica/Río Roma - Cuenta Conmigo (Cover Audio)(MP3_160K).mp3",
       imagen: "/reproductoryfrases/Sai.webp",
@@ -309,7 +309,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 31,
       titulo: "Coldplay y Ed Sheeran - Fix You",
-      artista: "Einy",
+      artista: "Eyni",
       duracion: "5:07",
       archivo: "/musica/Coldplay _ Ed Sheeran - Fix You (Live at Shepherd_s Bush Empire)(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Einy.webp"
