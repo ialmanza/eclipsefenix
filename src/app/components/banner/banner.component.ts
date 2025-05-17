@@ -42,12 +42,12 @@ export class BannerComponent implements OnInit {
     {
       nombre:'Alieny',
       description: 'Gracias por hacer que lo ordinario se vuelva extraordinario cada vez que coincidimos en fenix.',
-      imagen: '/reproductoryfrases/Alieny.webp'
+      imagen: '/reproductoryfrases/Alieny2.webp'
     },
     {
       nombre:'Yenisel',
       description: 'Tu liderazgo y amor han transformado no solo nuestras rutinas, sino también nuestros corazones, ayudándonos a reconectar con lo más importante: nuestros hijos.',
-      imagen: '/reproductoryfrases/Yenisel.webp'
+      imagen: '/reproductoryfrases/Yenisel2.webp'
     },
     {
       nombre:'Lily Alexa',
@@ -57,7 +57,7 @@ export class BannerComponent implements OnInit {
     {
       nombre: 'Claudia',
       description: 'Esta semana enfocarte en ti,en progresar, en ser mejor cada día por tus propósitos, por nadie más y veras como suceden las cosas.',
-      imagen: '/reproductoryfrases/Claudia.webp'
+      imagen: '/reproductoryfrases/Claudia2.webp'
     },
     {
       nombre:'Say',
@@ -97,12 +97,12 @@ export class BannerComponent implements OnInit {
     {
       nombre: 'Claudia',
       description: 'Una amistad no crece por la presencia de las personas sino por la magia de saber que aunque no las ves las llevas siempre en el corazón.',
-      imagen: '/reproductoryfrases/Claudia.webp'
+      imagen: '/reproductoryfrases/Claudia2.webp'
     },
     {
       nombre:'Yude',
       description: 'Lo importante no es lo q tenemos en la vida, sino a quien tenemos en ella.',
-      imagen: '/reproductoryfrases/Yude.webp'
+      imagen: '/reproductoryfrases/Yude2.webp'
     },
     {
       nombre:'Ilia',
@@ -112,7 +112,7 @@ export class BannerComponent implements OnInit {
     {
       nombre:'Alieny',
       description: 'Nunca eres demasiado viejo para establecer un nuevo objetivo o para soñar un nuevo sueño.',
-      imagen: '/reproductoryfrases/Alieny.webp'
+      imagen: '/reproductoryfrases/Alieny2.webp'
     },
     {
       nombre: 'Israel',
@@ -147,7 +147,7 @@ export class BannerComponent implements OnInit {
     {
       nombre: 'Claudia',
       description: 'Se q lo vas a lograr,porque te esfuerzas un montón,vales mucho,eres mucho y brillas mucho.',
-      imagen: '/reproductoryfrases/Claudia.webp'
+      imagen: '/reproductoryfrases/Claudia2.webp'
     },
     {
       nombre:'Ilia',
@@ -167,7 +167,7 @@ export class BannerComponent implements OnInit {
     {
       nombre:'Yenisel',
       description: 'Tu pasión por ayudarnos a liberar el estrés y fortalecer el vínculo con nuestros hijos ha sido un regalo invaluable. Eres una inspiración y un faro de esperanza para todas nosotras.',
-      imagen: '/reproductoryfrases/Yenisel.webp'
+      imagen: '/reproductoryfrases/Yenisel2.webp'
     },
     {
       nombre:'Iza',
@@ -190,7 +190,7 @@ export class BannerComponent implements OnInit {
     {
       nombre:'Alieny',
       description: 'Tú sonrisa es contagiosa y tú corazón es aún más hermoso.',
-      imagen: '/reproductoryfrases/Alieny.webp'
+      imagen: '/reproductoryfrases/Alieny2.webp'
     },
     {
       nombre:'Muñe',
@@ -206,7 +206,7 @@ export class BannerComponent implements OnInit {
       nombre:'Eliany',
       description: `Florece donde la vida te plante y embellece el mundo con tu esencia.
                     Sé tú, eso es todo`,
-      imagen: '/reproductoryfrases/Eliany.webp'
+      imagen: '/reproductoryfrases/Eliany2.webp'
     },
     {
       nombre:'Lily Alexa',
@@ -237,7 +237,7 @@ export class BannerComponent implements OnInit {
     {
       nombre:'Alieny',
       description: 'La vida es como el jazz, es mucho mejor si es improvisada.',
-      imagen: '/reproductoryfrases/Alieny.webp'
+      imagen: '/reproductoryfrases/Alieny2.webp'
     },
     {
       nombre: 'Israel',
@@ -283,7 +283,7 @@ export class BannerComponent implements OnInit {
     {
       nombre:'Alieny',
       description: 'Gracias por hacer que lo ordinario se vuelva extraordinario cada vez que coincidimos en fenix.',
-      imagen: '/reproductoryfrases/Alieny.webp'
+      imagen: '/reproductoryfrases/Alieny2.webp'
     },
     {
       nombre:'Muñe',
@@ -335,7 +335,7 @@ export class BannerComponent implements OnInit {
     {
       nombre:'Alieny',
       description: 'Eres como el trébol de cuatro hojas, difícil de encontrar pero una gran suerte tenerte.',
-      imagen: '/reproductoryfrases/Alieny.webp'
+      imagen: '/reproductoryfrases/Alieny2.webp'
     },
     {
       nombre:'Ilia',
@@ -355,7 +355,7 @@ export class BannerComponent implements OnInit {
     {
       nombre:'Indi',
       description: `I'll be there`,
-      imagen: '/reproductoryfrases/Indra.webp'
+      imagen: '/reproductoryfrases/Indra2.webp'
     },
     {
       nombre: 'claudia 🦋',

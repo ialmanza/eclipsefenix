@@ -313,6 +313,24 @@ export class GalleryComponent {
           url: '/distancia/Sai.webp',
           thumbnail: '/distancia/Sai.webp',
           caption: 'Say'
+        },
+        {
+          type: 'image',
+          url: '/reproductory y frases/Lisnaydis2.webp',
+          thumbnail: '/reproductoryfrases/Lisnaydis2.webp',
+          caption: 'Lis'
+        },
+        {
+          type: 'image',
+          url: '/reproductory y frases/Diana.webp',
+          thumbnail: '/reproductoryfrases/Diana.webp',
+          caption: 'Diana'
+        },
+        {
+          type: 'image',
+          url: '/reproductory y frases/Claudia_M.webp',
+          thumbnail: '/reproductoryfrases/Claudia_M.webp',
+          caption: 'Claudia 🦋'
         }
         // Agregar más items...
       ]

@@ -245,7 +245,7 @@ export class ReproductorComponent implements OnInit {
     {
       id: 23,
       titulo: "Melendi - El Cielo Nunca Cambiará",
-      artista: "Iliennis",
+      artista: "Ilennis",
       duracion: "4:14",
       archivo: "/musica/Melendi - El Cielo Nunca Cambiará(MP3_128K).mp3",
       imagen: "/reproductoryfrases/Ilieny.webp"
