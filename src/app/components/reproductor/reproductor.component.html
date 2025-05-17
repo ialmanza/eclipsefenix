@@ -78,18 +78,19 @@
     <div class="now-playing-bar">
       <div class="now-playing-left">
 
-        <button class="like-button" (click)="toggleFavorito()">
+        <!-- <button class="like-button" (click)="toggleFavorito()">
           <fa-icon [icon]="cancionActual?.favorito ? iconoCorazonLleno : iconoCorazon"></fa-icon>
-        </button>
+        </button> -->
       </div>
 
       <div class="now-playing-center">
 
         <div class="progress-bar">
-          <span class="time-current">{{tiempoActual}}</span>
+          <!-- <span class="time-current">{{tiempoActual}}</span>
           <input type="range" class="progress-slider" [value]="progresoActual" (input)="actualizarProgreso($event)">
-          <span class="time-total">{{cancionActual?.duracion || '0:00'}}</span>
+          <span class="time-total">{{cancionActual?.duracion || '0:00'}}</span> -->
         </div>
+        <br>
         <div class="player-controls">
           <button class="control-button" (click)="toggleShuffle()" [class.active]="isShuffleOn">
             <fa-icon [icon]="iconoShuffle"></fa-icon>
