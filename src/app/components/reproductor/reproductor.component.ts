@@ -190,7 +190,7 @@ export class ReproductorComponent implements OnInit {
       artista: "Valeria",
       duracion: "3:51",
       archivo: "/musica/Sia - Chandelier (Official Video)(MP3_160K).mp3",
-      imagen: "/reproductoryfrases/Sely2.webp",
+      imagen: "/reproductoryfrases/Valeria.webp",
       favorito: false
     },
     {
